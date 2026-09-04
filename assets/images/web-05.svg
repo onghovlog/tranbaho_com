@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" fill="none">
+  <rect width="600" height="400" fill="#f8f9fb"/>
+  <!-- Browser Frame -->
+  <rect x="25" y="25" width="550" height="350" rx="10" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.5"/>
+  <rect x="25" y="25" width="550" height="36" rx="10" fill="#f8f9fb"/>
+  <line x1="25" y1="61" x2="575" y2="61" stroke="#e5e7eb"/>
+  <circle cx="45" cy="43" r="4" fill="#f58220"/>
+  <circle cx="58" cy="43" r="4" fill="#1877f2"/>
+  <circle cx="71" cy="43" r="4" fill="#10b981"/>
+  <rect x="100" y="35" width="220" height="16" rx="8" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="115" y="46" font-family="'Inter', sans-serif" font-size="8.5" font-weight="600" fill="#6b7280">https://app.posorder.io</text>
+
+  <!-- SaaS Dashboard Layout -->
+  <g transform="translate(45, 75)">
+    <!-- Sidebar -->
+    <rect width="100" height="280" rx="6" fill="#1f2937"/>
+    <text x="15" y="30" font-family="'Inter', sans-serif" font-size="11" font-weight="900" fill="#f58220">POSORDER</text>
+    <rect x="10" y="50" width="80" height="24" rx="4" fill="#374151"/>
+    <text x="20" y="66" font-family="'Inter', sans-serif" font-size="9" font-weight="700" fill="#ffffff">📊 Tổng quan</text>
+    <text x="20" y="95" font-family="'Inter', sans-serif" font-size="9" font-weight="500" fill="#9ca3af">📦 Đơn hàng</text>
+    <text x="20" y="125" font-family="'Inter', sans-serif" font-size="9" font-weight="500" fill="#9ca3af">👥 Khách hàng</text>
+    <text x="20" y="155" font-family="'Inter', sans-serif" font-size="9" font-weight="500" fill="#9ca3af">⚙️ Cài đặt</text>
+
+    <!-- Main Board -->
+    <g transform="translate(115, 0)">
+      <!-- 3 Stat Widgets -->
+      <rect x="0" y="0" width="120" height="60" rx="6" fill="#eff6ff" stroke="#bfdbfe"/>
+      <text x="12" y="22" font-family="'Inter', sans-serif" font-size="9" font-weight="600" fill="#1e40af">Doanh thu ngày</text>
+      <text x="12" y="46" font-family="'Inter', sans-serif" font-size="14" font-weight="900" fill="#1e3a8a">18.450.000đ</text>
+
+      <rect x="135" y="0" width="120" height="60" rx="6" fill="#fff7ed" stroke="#fed7aa"/>
+      <text x="147" y="22" font-family="'Inter', sans-serif" font-size="9" font-weight="600" fill="#9a3412">Đơn mới</text>
+      <text x="147" y="46" font-family="'Inter', sans-serif" font-size="14" font-weight="900" fill="#c2410c">128 Đơn</text>
+
+      <rect x="270" y="0" width="125" height="60" rx="6" fill="#f0fdf4" stroke="#bbf7d0"/>
+      <text x="282" y="22" font-family="'Inter', sans-serif" font-size="9" font-weight="600" fill="#166534">Tỉ lệ hoàn đơn</text>
+      <text x="282" y="46" font-family="'Inter', sans-serif" font-size="14" font-weight="900" fill="#15803d">1.2%</text>
+
+      <!-- Chart Simulation -->
+      <rect x="0" y="75" width="395" height="195" rx="6" fill="#ffffff" stroke="#e5e7eb"/>
+      <text x="15" y="98" font-family="'Inter', sans-serif" font-size="11" font-weight="800" fill="#1f2937">Biểu đồ tăng trưởng doanh số theo tuần</text>
+      <path d="M20 220 L75 190 L135 205 L195 150 L255 165 L315 120 L375 110" fill="none" stroke="#f58220" stroke-width="3"/>
+      <circle cx="375" cy="110" r="5" fill="#f58220"/>
+    </g>
+  </g>
+</svg>

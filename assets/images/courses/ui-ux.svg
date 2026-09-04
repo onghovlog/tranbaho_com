@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" fill="none">
+  <defs>
+    <linearGradient id="bgGrad3" x1="0" y1="0" x2="640" y2="360" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#eff6ff"/>
+      <stop offset="1" stop-color="#f8fafc"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" rx="12" fill="url(#bgGrad3)"/>
+  <rect x="24" y="24" width="592" height="312" rx="10" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.5"/>
+  
+  <!-- Figma Layout Canvas -->
+  <rect x="54" y="54" width="340" height="252" rx="8" fill="#f8f9fb" stroke="#e2e8f0"/>
+  
+  <!-- App Wireframe Cards -->
+  <!-- Mobile screen wireframe -->
+  <rect x="74" y="74" width="100" height="180" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+  <rect x="86" y="86" width="76" height="12" rx="3" fill="#f58220"/>
+  <rect x="86" y="106" width="76" height="40" rx="4" fill="#eff6ff" stroke="#bfdbfe"/>
+  <rect x="86" y="154" width="36" height="36" rx="4" fill="#f1f5f9"/>
+  <rect x="126" y="154" width="36" height="36" rx="4" fill="#f1f5f9"/>
+  <rect x="86" y="198" width="76" height="16" rx="8" fill="#f58220"/>
+  
+  <!-- Desktop screen wireframe -->
+  <rect x="190" y="74" width="184" height="130" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+  <rect x="200" y="84" width="40" height="8" rx="2" fill="#1877f2"/>
+  <rect x="200" y="100" width="100" height="12" rx="2" fill="#0f172a"/>
+  <rect x="200" y="118" width="70" height="8" rx="2" fill="#94a3b8"/>
+  <rect x="200" y="134" width="44" height="14" rx="3" fill="#f58220"/>
+  <rect x="310" y="100" width="54" height="48" rx="4" fill="#eff6ff" stroke="#bfdbfe"/>
+
+  <!-- Figma selection cursor -->
+  <path d="M260 210 L272 238 L265 241 L258 226 L250 234 Z" fill="#0f172a" stroke="#ffffff" stroke-width="1"/>
+  <rect x="274" y="238" width="56" height="18" rx="3" fill="#0f172a"/>
+  <text x="302" y="251" font-family="'Inter', sans-serif" font-size="9" font-weight="700" fill="#ffffff" text-anchor="middle">Button</text>
+
+  <!-- Right Side Badges -->
+  <rect x="414" y="54" width="172" height="74" rx="8" fill="#f5f3ff" stroke="#ddd6fe"/>
+  <text x="430" y="86" font-family="'Inter', sans-serif" font-size="14" font-weight="800" fill="#5b21b6">FIGMA &amp; AI</text>
+  <text x="430" y="108" font-family="'Inter', sans-serif" font-size="11" font-weight="600" fill="#7c3aed">Prototype chuyên nghiệp</text>
+  
+  <rect x="414" y="142" width="172" height="74" rx="8" fill="#eff6ff" stroke="#bfdbfe"/>
+  <text x="430" y="174" font-family="'Inter', sans-serif" font-size="13" font-weight="800" fill="#1e40af">USER RESEARCH</text>
+  <text x="430" y="196" font-family="'Inter', sans-serif" font-size="11" font-weight="600" fill="#2563eb">Tư duy trải nghiệm</text>
+  
+  <rect x="414" y="230" width="172" height="76" rx="8" fill="#fff7ed" stroke="#fed7aa"/>
+  <text x="430" y="262" font-family="'Inter', sans-serif" font-size="13" font-weight="800" fill="#c2410c">DESIGN SYSTEM</text>
+  <text x="430" y="284" font-family="'Inter', sans-serif" font-size="11" font-weight="600" fill="#ea580c">Quy chuẩn UI chuẩn UX</text>
+</svg>

@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 560" fill="none">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="500" y2="560" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fff7ed"/>
+      <stop offset="1" stop-color="#f8f9fb"/>
+    </linearGradient>
+    <filter id="portraitShadow" x="-10" y="-10" width="520" height="580" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="16" stdDeviation="24" flood-color="#1f2937" flood-opacity="0.06"/>
+    </filter>
+  </defs>
+
+  <rect width="500" height="560" rx="20" fill="url(#bgGrad)"/>
+  <rect x="20" y="20" width="460" height="520" rx="16" stroke="#e5e7eb" stroke-width="1.5"/>
+
+  <!-- Geometric accent frame -->
+  <circle cx="250" cy="200" r="130" fill="#ffffff" stroke="#f58220" stroke-width="2" stroke-dasharray="6 4"/>
+
+  <!-- Lecturer / Professional Silhouette Graphic -->
+  <g transform="translate(130, 80)">
+    <!-- Head -->
+    <circle cx="120" cy="90" r="48" fill="#1f2937"/>
+    <!-- Glasses -->
+    <rect x="95" y="85" width="22" height="12" rx="3" stroke="#f58220" stroke-width="3" fill="none"/>
+    <rect x="123" y="85" width="22" height="12" rx="3" stroke="#f58220" stroke-width="3" fill="none"/>
+    <line x1="117" y1="91" x2="123" y2="91" stroke="#f58220" stroke-width="3"/>
+    <!-- Body / Suit Jacket -->
+    <path d="M40 230C40 165 80 150 120 150C160 150 200 165 200 230H40Z" fill="#1f2937"/>
+    <!-- Orange Tie & Shirt -->
+    <path d="M108 150H132L125 210H115L108 150Z" fill="#ffffff"/>
+    <path d="M117 160L123 160L125 215L120 225L115 215L117 160Z" fill="#f58220"/>
+  </g>
+
+  <!-- Tags / Badges Floating -->
+  <g filter="url(#portraitShadow)">
+    <!-- FPT Polytechnic Badge -->
+    <rect x="50" y="370" width="400" height="70" rx="12" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.5"/>
+    <rect x="65" y="385" width="40" height="40" rx="8" fill="#fff7ed"/>
+    <text x="75" y="411" font-family="'Inter', sans-serif" font-size="20" font-weight="900" fill="#f58220">FPT</text>
+    <text x="118" y="402" font-family="'Inter', sans-serif" font-size="14" font-weight="800" fill="#1f2937">Cao Đẳng FPT Polytechnic</text>
+    <text x="118" y="422" font-family="'Inter', sans-serif" font-size="11" font-weight="600" fill="#6b7280">Giảng viên Thiết kế Đồ họa &amp; CNTT</text>
+  </g>
+
+  <!-- Bottom Pills -->
+  <rect x="50" y="460" width="125" height="34" rx="17" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="70" y="482" font-family="'Inter', sans-serif" font-size="11" font-weight="700" fill="#f58220">🎨 UI/UX &amp; Brand</text>
+
+  <rect x="185" y="460" width="135" height="34" rx="17" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="202" y="482" font-family="'Inter', sans-serif" font-size="11" font-weight="700" fill="#1877f2">💻 Web Developer</text>
+
+  <rect x="330" y="460" width="120" height="34" rx="17" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="345" y="482" font-family="'Inter', sans-serif" font-size="11" font-weight="700" fill="#1f2937">📈 E-Commerce</text>
+</svg>

@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" fill="none">
+  <rect width="600" height="400" fill="#f8f9fb"/>
+  <!-- Browser Frame -->
+  <rect x="25" y="25" width="550" height="350" rx="10" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.5"/>
+  <rect x="25" y="25" width="550" height="36" rx="10" fill="#f8f9fb"/>
+  <line x1="25" y1="61" x2="575" y2="61" stroke="#e5e7eb"/>
+  <circle cx="45" cy="43" r="4" fill="#f58220"/>
+  <circle cx="58" cy="43" r="4" fill="#1877f2"/>
+  <circle cx="71" cy="43" r="4" fill="#10b981"/>
+  <rect x="100" y="35" width="220" height="16" rx="8" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="115" y="46" font-family="'Inter', sans-serif" font-size="8.5" font-weight="600" fill="#6b7280">https://auraboutique.vn</text>
+
+  <!-- Shop Content -->
+  <!-- Top Nav -->
+  <rect x="45" y="75" width="510" height="30" rx="6" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="60" y="94" font-family="'Inter', sans-serif" font-size="11" font-weight="800" fill="#1f2937">AURA STORE</text>
+  <text x="250" y="94" font-family="'Inter', sans-serif" font-size="9" font-weight="600" fill="#6b7280">HÀNG MỚI · THỜI TRANG · MỸ PHẨM · SALE</text>
+  <rect x="490" y="81" width="55" height="18" rx="4" fill="#f58220"/>
+  <text x="500" y="93" font-family="'Inter', sans-serif" font-size="8" font-weight="700" fill="#ffffff">GIỎ HÀNG (2)</text>
+
+  <!-- Shop Hero Banner -->
+  <rect x="45" y="115" width="510" height="90" rx="8" fill="#fff7ed" stroke="#f58220" stroke-width="1"/>
+  <text x="70" y="145" font-family="'Inter', sans-serif" font-size="16" font-weight="800" fill="#f58220">BST THỜI TRANG THU ĐÔNG 2026</text>
+  <text x="70" y="165" font-family="'Inter', sans-serif" font-size="10" font-weight="500" fill="#4b5563">Giảm 20% khi đặt hàng trực tiếp qua website · Miễn phí giao hàng toàn quốc</text>
+  <rect x="70" y="175" width="90" height="20" rx="4" fill="#1f2937"/>
+  <text x="85" y="188" font-family="'Inter', sans-serif" font-size="8.5" font-weight="700" fill="#ffffff">MUA NGAY →</text>
+
+  <!-- 3 Product Cards -->
+  <g transform="translate(45, 218)">
+    <rect x="0" y="0" width="160" height="140" rx="6" fill="#ffffff" stroke="#e5e7eb"/>
+    <rect x="10" y="10" width="140" height="75" rx="4" fill="#f8f9fb"/>
+    <circle cx="80" cy="47" r="18" fill="#fff7ed"/>
+    <text x="10" y="102" font-family="'Inter', sans-serif" font-size="9.5" font-weight="700" fill="#1f2937">Váy Lụa Premium</text>
+    <text x="10" y="118" font-family="'Inter', sans-serif" font-size="9" font-weight="800" fill="#f58220">450.000đ</text>
+    <rect x="105" y="106" width="45" height="16" rx="3" fill="#1877f2"/>
+    <text x="113" y="117" font-family="'Inter', sans-serif" font-size="7.5" font-weight="700" fill="#ffffff">THÊM</text>
+
+    <rect x="175" y="0" width="160" height="140" rx="6" fill="#ffffff" stroke="#e5e7eb"/>
+    <rect x="185" y="10" width="140" height="75" rx="4" fill="#f8f9fb"/>
+    <circle cx="255" cy="47" r="18" fill="#eff6ff"/>
+    <text x="185" y="102" font-family="'Inter', sans-serif" font-size="9.5" font-weight="700" fill="#1f2937">Serum Phục Hồi Da</text>
+    <text x="185" y="118" font-family="'Inter', sans-serif" font-size="9" font-weight="800" fill="#f58220">380.000đ</text>
+    <rect x="280" y="106" width="45" height="16" rx="3" fill="#1877f2"/>
+    <text x="288" y="117" font-family="'Inter', sans-serif" font-size="7.5" font-weight="700" fill="#ffffff">THÊM</text>
+
+    <rect x="350" y="0" width="160" height="140" rx="6" fill="#ffffff" stroke="#e5e7eb"/>
+    <rect x="360" y="10" width="140" height="75" rx="4" fill="#f8f9fb"/>
+    <circle cx="430" cy="47" r="18" fill="#f0fdf4"/>
+    <text x="360" y="102" font-family="'Inter', sans-serif" font-size="9.5" font-weight="700" fill="#1f2937">Túi Xách Da Minimal</text>
+    <text x="360" y="118" font-family="'Inter', sans-serif" font-size="9" font-weight="800" fill="#f58220">590.000đ</text>
+    <rect x="455" y="106" width="45" height="16" rx="3" fill="#1877f2"/>
+    <text x="463" y="117" font-family="'Inter', sans-serif" font-size="7.5" font-weight="700" fill="#ffffff">THÊM</text>
+  </g>
+</svg>

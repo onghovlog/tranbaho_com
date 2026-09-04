@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 350" fill="none">
+  <rect width="600" height="350" fill="#eff6ff"/>
+  <rect x="25" y="25" width="550" height="300" rx="12" fill="#ffffff" stroke="#1877f2" stroke-width="1.5"/>
+  <circle cx="90" cy="90" r="30" fill="#eff6ff"/>
+  <text x="90" y="98" font-family="'Inter', sans-serif" font-size="22" font-weight="900" fill="#1877f2" text-anchor="middle">02</text>
+  <text x="140" y="80" font-family="'Inter', sans-serif" font-size="11" font-weight="700" fill="#1877f2">PHÁT TRIỂN WEBSITE</text>
+  <text x="140" y="105" font-family="'Inter', sans-serif" font-size="16" font-weight="800" fill="#1f2937">Vì Sao Bán Hàng Online Năm 2026 Cần Có Website Riêng?</text>
+  
+  <rect x="50" y="150" width="500" height="130" rx="8" fill="#f8f9fb"/>
+  <text x="75" y="185" font-family="'Inter', sans-serif" font-size="12" font-weight="500" fill="#4b5563">Phân tích rủi ro khi chỉ phụ thuộc vào thuật toán mạng xã hội và cách website</text>
+  <text x="75" y="210" font-family="'Inter', sans-serif" font-size="12" font-weight="500" fill="#4b5563">giúp tăng tỉ lệ chốt đơn tự động lên tới 40%.</text>
+  <rect x="75" y="235" width="85" height="24" rx="4" fill="#1877f2"/>
+  <text x="88" y="251" font-family="'Inter', sans-serif" font-size="9" font-weight="700" fill="#ffffff">ĐỌC BÀI VIẾT</text>
+</svg>

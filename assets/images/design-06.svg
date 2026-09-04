@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" fill="none">
+  <rect width="600" height="450" fill="#f8f9fb"/>
+  <rect x="40" y="40" width="520" height="370" rx="14" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.5"/>
+  <g transform="translate(100, 70)">
+    <rect x="0" y="0" width="180" height="130" rx="8" fill="#fff7ed" stroke="#f58220"/>
+    <text x="90" y="55" font-family="'Inter', sans-serif" font-size="28" font-weight="900" fill="#f58220" text-anchor="middle">Aa</text>
+    <text x="90" y="85" font-family="'Inter', sans-serif" font-size="11" font-weight="600" fill="#6b7280" text-anchor="middle">Custom Brand Type</text>
+
+    <rect x="220" y="0" width="180" height="130" rx="8" fill="#eff6ff" stroke="#1877f2"/>
+    <circle cx="310" cy="50" r="22" fill="#1877f2"/>
+    <text x="310" y="56" font-family="'Inter', sans-serif" font-size="16" font-weight="800" fill="#ffffff" text-anchor="middle">★</text>
+    <text x="310" y="90" font-family="'Inter', sans-serif" font-size="11" font-weight="600" fill="#6b7280" text-anchor="middle">Brand Guidelines</text>
+  </g>
+  <text x="300" y="265" font-family="'Inter', sans-serif" font-size="20" font-weight="800" fill="#1f2937" text-anchor="middle">ZENITH STUDIO GUIDELINES</text>
+  <text x="300" y="290" font-family="'Inter', sans-serif" font-size="12" font-weight="600" fill="#6b7280" text-anchor="middle">Hệ Thống Quy Chuẩn Thương Hiệu Toàn Diện</text>
+  <rect x="235" y="320" width="130" height="30" rx="15" fill="#fff7ed" stroke="#f58220"/>
+  <text x="300" y="340" font-family="'Inter', sans-serif" font-size="11" font-weight="700" fill="#f58220" text-anchor="middle">BRANDING</text>
+</svg>

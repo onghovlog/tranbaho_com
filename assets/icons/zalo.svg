@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <rect width="48" height="48" rx="10" fill="#0068ff"/>
+  <path d="M12 28.5V19.5H23.5L12 28.5ZM25.5 19.5V28.5H36L25.5 19.5Z" fill="#ffffff" fill-opacity="0.1"/>
+  <text x="24" y="30" font-family="'Plus Jakarta Sans', sans-serif" font-size="16" font-weight="900" fill="#ffffff" text-anchor="middle">Zalo</text>
+</svg>

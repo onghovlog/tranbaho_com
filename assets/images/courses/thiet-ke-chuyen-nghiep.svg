@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" fill="none">
+  <defs>
+    <linearGradient id="bgGrad1" x1="0" y1="0" x2="640" y2="360" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fff8f2"/>
+      <stop offset="1" stop-color="#f3f4f6"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" rx="12" fill="url(#bgGrad1)"/>
+  <rect x="24" y="24" width="592" height="312" rx="10" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.5"/>
+  
+  <!-- Canvas Artwork area -->
+  <rect x="54" y="54" width="340" height="252" rx="8" fill="#f8f9fb" stroke="#e2e8f0"/>
+  <!-- Pen Tool vector curve -->
+  <path d="M90 240 C 150 100, 250 280, 350 120" stroke="#f58220" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <circle cx="90" cy="240" r="6" fill="#ffffff" stroke="#f58220" stroke-width="3"/>
+  <circle cx="190" cy="170" r="5" fill="#f58220"/>
+  <circle cx="350" cy="120" r="6" fill="#ffffff" stroke="#f58220" stroke-width="3"/>
+  <!-- Pen anchor handle lines -->
+  <line x1="140" y1="130" x2="240" y2="210" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <circle cx="140" cy="130" r="4" fill="#3b82f6"/>
+  <circle cx="240" cy="210" r="4" fill="#3b82f6"/>
+  
+  <!-- Right tools column / floating badges -->
+  <rect x="414" y="54" width="172" height="74" rx="8" fill="#eff6ff" stroke="#bfdbfe"/>
+  <text x="430" y="86" font-family="'Inter', sans-serif" font-size="14" font-weight="800" fill="#1e40af">Ps • Ai • AI</text>
+  <text x="430" y="108" font-family="'Inter', sans-serif" font-size="11" font-weight="600" fill="#3b82f6">Photoshop + Illustrator</text>
+  
+  <rect x="414" y="142" width="172" height="74" rx="8" fill="#fff7ed" stroke="#fed7aa"/>
+  <text x="430" y="174" font-family="'Inter', sans-serif" font-size="13" font-weight="800" fill="#c2410c">AI HỖ TRỢ</text>
+  <text x="430" y="196" font-family="'Inter', sans-serif" font-size="11" font-weight="600" fill="#ea580c">Tăng tốc 300% quy trình</text>
+  
+  <rect x="414" y="230" width="172" height="76" rx="8" fill="#f0fdf4" stroke="#bbf7d0"/>
+  <text x="430" y="262" font-family="'Inter', sans-serif" font-size="13" font-weight="800" fill="#15803d">THỰC HÀNH 100%</text>
+  <text x="430" y="284" font-family="'Inter', sans-serif" font-size="11" font-weight="600" fill="#16a34a">Sản phẩm thực tế</text>
+</svg>

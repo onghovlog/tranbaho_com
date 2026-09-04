@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trang Quản Trị Admin | Trần Bá Hộ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-body">
+
+  <!-- ==================== 1. LOGIN SCREEN ==================== -->
+  <div id="login-view" class="login-wrapper">
+    <div class="login-card">
+      <div class="login-header">
+        <div class="login-logo-badge">TBH</div>
+        <h2>Đăng Nhập Quản Trị</h2>
+        <p>Hệ thống quản lý dữ liệu website Trần Bá Hộ</p>
+      </div>
+
+      <div id="login-alert" class="admin-alert alert-error" style="display: none;"></div>
+
+      <form id="admin-login-form">
+        <div class="form-group">
+          <label for="username" class="form-label">Tài khoản Admin</label>
+          <input type="text" id="username" class="form-control" value="admin" required placeholder="Nhập tài khoản">
+        </div>
+
+        <div class="form-group">
+          <label for="password" class="form-label">Mật khẩu</label>
+          <input type="password" id="password" class="form-control" value="Admin123@2026" required placeholder="Nhập mật khẩu">
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100 btn-login" id="btn-login-submit">
+          🔑 Đăng Nhập Quản Trị
+        </button>
+      </form>
+
+      <div class="login-footer">
+        <a href="/" target="_blank">← Quay về Trang chủ Website</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 2. MAIN ADMIN DASHBOARD ==================== -->
+  <div id="dashboard-view" class="admin-layout" style="display: none;">
+    <!-- Top Navbar -->
+    <header class="admin-header">
+      <div class="admin-brand">
+        <span class="brand-badge">Admin</span>
+        <span class="brand-title">Trần Bá Hộ - Portal</span>
+      </div>
+      <div class="admin-user-bar">
+        <a href="/" target="_blank" class="btn btn-outline-light btn-sm me-2">🌐 Xem Trang Chủ</a>
+        <span class="user-name" id="current-user-display">admin</span>
+        <button type="button" class="btn btn-danger btn-sm" id="btn-logout">🔒 Đăng xuất</button>
+      </div>
+    </header>
+
+    <div class="admin-container">
+      <!-- Sidebar Navigation -->
+      <aside class="admin-sidebar">
+        <nav class="sidebar-nav">
+          <button class="nav-item active" data-tab="overview">
+            <span class="icon">📊</span> Tổng quan
+          </button>
+          <button class="nav-item" data-tab="contacts">
+            <span class="icon">📬</span> Khách hàng liên hệ <span class="badge-count" id="badge-leads-count">0</span>
+          </button>
+          <button class="nav-item" data-tab="courses">
+            <span class="icon">🎓</span> Quản lý Khóa học
+          </button>
+          <button class="nav-item" data-tab="designPortfolio">
+            <span class="icon">🎨</span> Portfolio Thiết kế
+          </button>
+          <button class="nav-item" data-tab="webProjects">
+            <span class="icon">💻</span> Dự án Web
+          </button>
+          <button class="nav-item" data-tab="articles">
+            <span class="icon">📰</span> Bài viết & Tin tức
+          </button>
+          <button class="nav-item" data-tab="youtubeVideos">
+            <span class="icon">🎬</span> Thư viện Video
+          </button>
+          <button class="nav-item" data-tab="profile">
+            <span class="icon">👤</span> Thông tin cá nhân
+          </button>
+        </nav>
+      </aside>
+
+      <!-- Main Content Panels -->
+      <main class="admin-main">
+        
+        <!-- Tab 1: Overview -->
+        <section id="panel-overview" class="admin-panel active">
+          <div class="panel-header">
+            <h2>📊 Tổng Quan Hệ Thống</h2>
+            <p>Thống kê dữ liệu trực tiếp trên cơ sở dữ liệu MongoDB Atlas Cloud</p>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon">📬</div>
+              <div class="stat-info">
+                <div class="stat-val" id="stat-leads-count">0</div>
+                <div class="stat-lbl">Khách hàng Liên hệ (Leads)</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">🎓</div>
+              <div class="stat-info">
+                <div class="stat-val" id="stat-courses-count">0</div>
+                <div class="stat-lbl">Khóa học Đang hiển thị</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">🎨</div>
+              <div class="stat-info">
+                <div class="stat-val" id="stat-design-count">0</div>
+                <div class="stat-lbl">Tác phẩm Portfolio</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">📰</div>
+              <div class="stat-info">
+                <div class="stat-val" id="stat-articles-count">0</div>
+                <div class="stat-lbl">Bài viết Blog</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="overview-quick-actions">
+            <h3>🚀 Thao tác nhanh</h3>
+            <div class="action-buttons">
+              <button class="btn btn-primary btn-sm" onclick="switchTab('contacts')">📬 Xem danh sách khách hàng mới</button>
+              <button class="btn btn-outline-primary btn-sm" onclick="openCrudModal('courses', 'add')">➕ Thêm Khóa học mới</button>
+              <button class="btn btn-outline-primary btn-sm" onclick="openCrudModal('articles', 'add')">✍️ Viết Bài báo mới</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Tab 2: Contacts / Leads -->
+        <section id="panel-contacts" class="admin-panel">
+          <div class="panel-header">
+            <h2>📬 Danh Sách Khách Hàng Liên Hệ (Leads)</h2>
+            <p>Thông tin nhận được từ Form liên hệ trên trang chủ</p>
+          </div>
+          <div class="table-responsive">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Thời gian</th>
+                  <th>Họ và tên</th>
+                  <th>Số điện thoại</th>
+                  <th>Email</th>
+                  <th>Nhu cầu quan tâm</th>
+                  <th>Lời nhắn</th>
+                  <th>Thao tác</th>
+                </tr>
+              </thead>
+              <tbody id="table-body-contacts">
+                <tr><td colspan="7" class="text-center">Đang tải dữ liệu...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Tab 3: Courses -->
+        <section id="panel-courses" class="admin-panel">
+          <div class="panel-header flex-header">
+            <div>
+              <h2>🎓 Quản Lý Khóa Học</h2>
+              <p>Danh sách các khóa học hiển thị trên website</p>
+            </div>
+            <button class="btn btn-primary btn-sm" onclick="openCrudModal('courses', 'add')">➕ Thêm Khóa Học</button>
+          </div>
+          <div class="table-responsive">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Hình ảnh</th>
+                  <th>Tên khóa học</th>
+                  <th>Hình thức</th>
+                  <th>Kỹ năng chính</th>
+                  <th>Trạng thái</th>
+                  <th>Thao tác</th>
+                </tr>
+              </thead>
+              <tbody id="table-body-courses">
+                <tr><td colspan="6" class="text-center">Đang tải dữ liệu...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Tab 4: Design Portfolio -->
+        <section id="panel-designPortfolio" class="admin-panel">
+          <div class="panel-header flex-header">
+            <div>
+              <h2>🎨 Portfolio Thiết Kế Đồ Họa</h2>
+              <p>Các tác phẩm thiết kế logo, sự kiện, branding</p>
+            </div>
+            <button class="btn btn-primary btn-sm" onclick="openCrudModal('designPortfolio', 'add')">➕ Thêm Tác Phẩm</button>
+          </div>
+          <div class="table-responsive">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Xem trước</th>
+                  <th>Tiêu đề</th>
+                  <th>Phân loại</th>
+                  <th>Khách hàng</th>
+                  <th>Năm</th>
+                  <th>Thao tác</th>
+                </tr>
+              </thead>
+              <tbody id="table-body-designPortfolio">
+                <tr><td colspan="6" class="text-center">Đang tải dữ liệu...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Tab 5: Web Projects -->
+        <section id="panel-webProjects" class="admin-panel">
+          <div class="panel-header flex-header">
+            <div>
+              <h2>💻 Dự Án Website</h2>
+              <p>Danh sách dự án mẫu website Shop Có Web, Landing Page, Doanh nghiệp</p>
+            </div>
+            <button class="btn btn-primary btn-sm" onclick="openCrudModal('webProjects', 'add')">➕ Thêm Dự Án Web</button>
+          </div>
+          <div class="table-responsive">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Hình ảnh</th>
+                  <th>Tên dự án</th>
+                  <th>Danh mục</th>
+                  <th>Công nghệ</th>
+                  <th>Thao tác</th>
+                </tr>
+              </thead>
+              <tbody id="table-body-webProjects">
+                <tr><td colspan="5" class="text-center">Đang tải dữ liệu...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Tab 6: Articles -->
+        <section id="panel-articles" class="admin-panel">
+          <div class="panel-header flex-header">
+            <div>
+              <h2>📰 Quản Lý Bài Viết & Tin Tức</h2>
+              <p>Danh sách bài viết chuyên môn và kinh nghiệm</p>
+            </div>
+            <button class="btn btn-primary btn-sm" onclick="openCrudModal('articles', 'add')">➕ Viết Bài Mới</button>
+          </div>
+          <div class="table-responsive">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Ảnh</th>
+                  <th>Tiêu đề bài viết</th>
+                  <th>Chuyên mục</th>
+                  <th>Ngày đăng</th>
+                  <th>Thao tác</th>
+                </tr>
+              </thead>
+              <tbody id="table-body-articles">
+                <tr><td colspan="5" class="text-center">Đang tải dữ liệu...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Tab 7: YouTube Videos -->
+        <section id="panel-youtubeVideos" class="admin-panel">
+          <div class="panel-header flex-header">
+            <div>
+              <h2>🎬 Quản Lý Video YouTube</h2>
+              <p>Danh sách video chia sẻ kiến thức & bài giảng</p>
+            </div>
+            <button class="btn btn-primary btn-sm" onclick="openCrudModal('youtubeVideos', 'add')">➕ Thêm Video</button>
+          </div>
+          <div class="table-responsive">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Thumbnail</th>
+                  <th>Tiêu đề Video</th>
+                  <th>Video ID</th>
+                  <th>Thời lượng</th>
+                  <th>Danh mục</th>
+                  <th>Thao tác</th>
+                </tr>
+              </thead>
+              <tbody id="table-body-youtubeVideos">
+                <tr><td colspan="6" class="text-center">Đang tải dữ liệu...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Tab 8: Profile -->
+        <section id="panel-profile" class="admin-panel">
+          <div class="panel-header">
+            <h2>👤 Thông Tin Cá Nhân & Liên Hệ</h2>
+            <p>Cập nhật số điện thoại, email, link Zalo hiển thị toàn website</p>
+          </div>
+          <div class="admin-form-container">
+            <form id="form-profile-update">
+              <div class="form-group">
+                <label class="form-label">Họ và tên</label>
+                <input type="text" id="prof-name" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Chức danh / Vai trò</label>
+                <input type="text" id="prof-role" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Tagline định vị</label>
+                <input type="text" id="prof-tagline" class="form-control">
+              </div>
+              <div class="grid-2">
+                <div class="form-group">
+                  <label class="form-label">Số điện thoại / Hotline</label>
+                  <input type="text" id="prof-phone" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Email</label>
+                  <input type="email" id="prof-email" class="form-control">
+                </div>
+              </div>
+              <div class="grid-2">
+                <div class="form-group">
+                  <label class="form-label">Link Zalo</label>
+                  <input type="text" id="prof-zalo" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Địa điểm làm việc</label>
+                  <input type="text" id="prof-location" class="form-control">
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary mt-3">💾 Lưu Thay Đổi Profile</button>
+            </form>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- ==================== 3. CRUD MODAL DIALOG ==================== -->
+  <div id="crud-modal" class="modal-backdrop">
+    <div class="crud-modal-card">
+      <div class="modal-header">
+        <h3 id="crud-modal-title">Thêm Bản Ghi Mới</h3>
+        <button type="button" class="modal-close" onclick="closeCrudModal()">✕</button>
+      </div>
+      <form id="crud-modal-form">
+        <div class="modal-body" id="crud-modal-fields">
+          <!-- Dynamic form fields injected by JS -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" onclick="closeCrudModal()">Hủy bỏ</button>
+          <button type="submit" class="btn btn-primary" id="btn-crud-save">💾 Lưu Dữ Liệu</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>

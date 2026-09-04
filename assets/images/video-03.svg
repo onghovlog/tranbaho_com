@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 350" fill="none">
+  <rect width="600" height="350" fill="#18181b"/>
+  <rect x="20" y="20" width="560" height="310" rx="12" fill="#09090b" stroke="#27272a"/>
+  <circle cx="300" cy="150" r="40" fill="#10b981"/>
+  <polygon points="290,135 318,150 290,165" fill="#ffffff"/>
+  <rect x="50" y="240" width="500" height="60" rx="8" fill="#18181b" fill-opacity="0.8"/>
+  <text x="70" y="265" font-family="'Inter', sans-serif" font-size="14" font-weight="800" fill="#ffffff">Mô Hình Droppii Là Gì? Bí Quyết Bán Hàng Online Tinh Gọn Không Cần Vốn</text>
+  <text x="70" y="285" font-family="'Inter', sans-serif" font-size="11" font-weight="500" fill="#34d399">Thời lượng: 19:20 · Kinh Doanh Thực Chiến</text>
+</svg>

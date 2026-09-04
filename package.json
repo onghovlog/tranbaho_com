@@ -1,0 +1,16 @@
+{
+  "name": "tran_ba_ho_website",
+  "version": "1.0.0",
+  "description": "Landing page & Portfolio & Admin Dashboard - Tran Ba Ho",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "seed": "node seed.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.4.5",
+    "jsonwebtoken": "^9.0.3",
+    "mongodb": "^6.3.0"
+  }
+}

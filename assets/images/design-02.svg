@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" fill="none">
+  <rect width="600" height="450" fill="#f8f9fb"/>
+  <rect x="30" y="30" width="540" height="390" rx="12" fill="#ffffff" stroke="#e5e7eb" stroke-width="2"/>
+  <!-- Key Visual Event Graphics -->
+  <rect x="60" y="60" width="480" height="180" rx="8" fill="#1877f2" fill-opacity="0.08"/>
+  <path d="M120 180L200 100L280 160L380 80L480 170" stroke="#1877f2" stroke-width="3" stroke-dasharray="6 4"/>
+  <circle cx="200" cy="100" r="8" fill="#f58220"/>
+  <circle cx="380" cy="80" r="8" fill="#1877f2"/>
+  
+  <text x="300" y="280" font-family="'Inter', sans-serif" font-size="20" font-weight="800" fill="#1f2937" text-anchor="middle">FPT TECHFEST 2026 KEY VISUAL</text>
+  <text x="300" y="305" font-family="'Inter', sans-serif" font-size="12" font-weight="600" fill="#6b7280" text-anchor="middle">Bộ Nhận Diện Sự Kiện Công Nghệ &amp; Thiết Kế</text>
+  <rect x="230" y="330" width="140" height="32" rx="16" fill="#eff6ff" stroke="#1877f2"/>
+  <text x="300" y="351" font-family="'Inter', sans-serif" font-size="11" font-weight="700" fill="#1877f2" text-anchor="middle">SỰ KIỆN &amp; POSTER</text>
+</svg>

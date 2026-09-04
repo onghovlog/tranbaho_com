@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" fill="none">
+  <rect width="600" height="450" fill="#1f2937"/>
+  <circle cx="300" cy="200" r="90" fill="#f58220" fill-opacity="0.15"/>
+  <circle cx="300" cy="200" r="60" stroke="#f58220" stroke-width="3"/>
+  <path d="M280 170H320M300 170V230M285 200H315" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
+  <text x="300" y="325" font-family="'Inter', sans-serif" font-size="22" font-weight="800" fill="#ffffff" text-anchor="middle" letter-spacing="1">NEXUS COFFEE &amp; ROASTERY</text>
+  <text x="300" y="355" font-family="'Inter', sans-serif" font-size="12" font-weight="600" fill="#f58220" text-anchor="middle" letter-spacing="3">BRAND IDENTITY &amp; LOGO DESIGN</text>
+</svg>

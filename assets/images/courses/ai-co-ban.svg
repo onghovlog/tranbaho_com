@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" fill="none">
+  <defs>
+    <linearGradient id="bgGrad5" x1="0" y1="0" x2="640" y2="360" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#faf5ff"/>
+      <stop offset="1" stop-color="#eff6ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" rx="12" fill="url(#bgGrad5)"/>
+  <rect x="24" y="24" width="592" height="312" rx="10" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.5"/>
+  
+  <!-- AI Prompt & Output Box -->
+  <rect x="54" y="54" width="340" height="252" rx="8" fill="#0f172a"/>
+  
+  <!-- AI Prompt Input -->
+  <rect x="70" y="70" width="308" height="42" rx="6" fill="#1e293b" stroke="#334155"/>
+  <text x="84" y="95" font-family="'Inter', sans-serif" font-size="11" font-weight="600" fill="#38bdf8">✨ /imagine prompt: create modern slide presentation...</text>
+
+  <!-- 4 Generated AI Outputs -->
+  <!-- 1. Slide AI -->
+  <rect x="70" y="124" width="146" height="78" rx="6" fill="#1e293b" stroke="#475569"/>
+  <rect x="80" y="134" width="60" height="10" rx="2" fill="#f58220"/>
+  <rect x="80" y="150" width="120" height="6" rx="2" fill="#64748b"/>
+  <rect x="80" y="162" width="90" height="6" rx="2" fill="#64748b"/>
+  <text x="80" y="190" font-family="'Inter', sans-serif" font-size="9" font-weight="700" fill="#fb923c">AI Slide Generator</text>
+
+  <!-- 2. Image AI -->
+  <rect x="232" y="124" width="146" height="78" rx="6" fill="#1e293b" stroke="#475569"/>
+  <circle cx="305" cy="155" r="18" fill="#3b82f6"/>
+  <text x="305" y="190" font-family="'Inter', sans-serif" font-size="9" font-weight="700" fill="#60a5fa" text-anchor="middle">AI Image Art</text>
+
+  <!-- 3. Video AI -->
+  <rect x="70" y="212" width="146" height="78" rx="6" fill="#1e293b" stroke="#475569"/>
+  <polygon points="135,236 155,248 135,260" fill="#10b981"/>
+  <text x="143" y="278" font-family="'Inter', sans-serif" font-size="9" font-weight="700" fill="#34d399" text-anchor="middle">AI Video Creator</text>
+
+  <!-- 4. Text/Content AI -->
+  <rect x="232" y="212" width="146" height="78" rx="6" fill="#1e293b" stroke="#475569"/>
+  <rect x="246" y="226" width="118" height="6" rx="2" fill="#a855f7"/>
+  <rect x="246" y="238" width="100" height="6" rx="2" fill="#a855f7"/>
+  <rect x="246" y="250" width="70" height="6" rx="2" fill="#a855f7"/>
+  <text x="246" y="278" font-family="'Inter', sans-serif" font-size="9" font-weight="700" fill="#c084fc">AI Copywriting</text>
+
+  <!-- Right Side Badges -->
+  <rect x="414" y="54" width="172" height="74" rx="8" fill="#faf5ff" stroke="#e9d5ff"/>
+  <text x="430" y="86" font-family="'Inter', sans-serif" font-size="14" font-weight="800" fill="#6b21a8">CÔNG CỤ AI HOT</text>
+  <text x="430" y="108" font-family="'Inter', sans-serif" font-size="11" font-weight="600" fill="#9333ea">ChatGPT, Midjourney...</text>
+  
+  <rect x="414" y="142" width="172" height="74" rx="8" fill="#eff6ff" stroke="#bfdbfe"/>
+  <text x="430" y="174" font-family="'Inter', sans-serif" font-size="13" font-weight="800" fill="#1e40af">TỰ ĐỘNG HÓA</text>
+  <text x="430" y="196" font-family="'Inter', sans-serif" font-size="11" font-weight="600" fill="#2563eb">X10 hiệu suất làm việc</text>
+  
+  <rect x="414" y="230" width="172" height="76" rx="8" fill="#fff7ed" stroke="#fed7aa"/>
+  <text x="430" y="262" font-family="'Inter', sans-serif" font-size="13" font-weight="800" fill="#c2410c">DỄ DÀNG ÁP DỤNG</text>
+  <text x="430" y="284" font-family="'Inter', sans-serif" font-size="11" font-weight="600" fill="#ea580c">Dành cho mọi đối tượng</text>
+</svg>

@@ -1,0 +1,816 @@
+{
+  "profile": {
+    "name": "Trần Bá Hộ",
+    "role": "Giảng viên Thiết kế Đồ họa & Công nghệ Thông tin tại Cao đẳng FPT Polytechnic",
+    "tagline": "Thiết kế · Website · Công nghệ · Kinh doanh",
+    "phone": "0918 326 706",
+    "email": "tranbaho@gmail.com",
+    "zalo": "https://zalo.me/0918326706",
+    "messenger": "https://m.me/baho.tran",
+    "location": "TP. Hồ Chí Minh, Việt Nam"
+  },
+  "heroSlides": [
+    {
+      "id": 1,
+      "type": "content_image",
+      "badge": "SHOP CÓ WEB & GIẢI PHÁP SỐ TOÀN DIỆN",
+      "title": "Kinh doanh mà <br /><span class=\"text-highlight\">chưa có web?</span>",
+      "description": "Từ thiết kế thương hiệu đến xây dựng website – tôi giúp bạn tạo một hình ảnh kinh doanh chuyên nghiệp hơn trên Internet. <strong>Thiết kế đẹp để khách nhớ. Website tốt để khách mua.</strong>",
+      "primaryBtn": {
+        "text": "Xem mẫu website",
+        "link": "#mau-website"
+      },
+      "secondaryBtn": {
+        "text": "Trao đổi cùng tôi",
+        "link": "#lien-he"
+      },
+      "roles": [
+        "Giảng viên TKĐH & CNTT",
+        "Designer",
+        "Web Developer",
+        "Online Business"
+      ],
+      "image": "assets/images/01_ban_kinh_doanh_can_lam_web.png",
+      "imageAlt": "Kinh doanh mà chưa có web? Giải pháp Shop Có Web"
+    },
+    {
+      "id": 2,
+      "type": "content_image",
+      "badge": "THIẾT KẾ ĐỒ HỌA & NHẬN DIỆN THƯƠNG HIỆU",
+      "title": "Định hình thương hiệu <br /><span class=\"text-highlight\">sang trọng & độc bản</span>",
+      "description": "Hơn 8 năm kinh nghiệm thiết kế Logo, Brand Guidelines, bao bì sản phẩm và ấn phẩm truyền thông đa kênh giúp doanh nghiệp khẳng định vị thế dẫn đầu.",
+      "primaryBtn": {
+        "text": "Xem portfolio thiết kế",
+        "link": "#portfolio-thiet-ke"
+      },
+      "secondaryBtn": {
+        "text": "Tư vấn thiết kế",
+        "link": "#lien-he"
+      },
+      "roles": [
+        "Logo Design",
+        "Brand Guidelines",
+        "Packaging",
+        "Social Media"
+      ],
+      "image": "assets/images/02_graphic_design.png",
+      "imageAlt": "Thiết kế đồ họa và bộ nhận diện thương hiệu chuyên nghiệp"
+    },
+    {
+      "id": 3,
+      "type": "content_image",
+      "badge": "VIDEO CHIA SẺ & ĐÀO TẠO THỰC CHIẾN",
+      "title": "Học thiết kế & lập trình <br /><span class=\"text-highlight\">cùng Trần Bá Hộ</span>",
+      "description": "Video bài giảng trực quan, đúc kết từ thực tế giảng dạy tại Cao đẳng FPT Polytechnic và triển khai hàng trăm dự án thương mại thực chiến.",
+      "primaryBtn": {
+        "text": "Xem video YouTube",
+        "link": "#thu-vien"
+      },
+      "secondaryBtn": {
+        "text": "Khám phá thư viện",
+        "link": "#thu-vien"
+      },
+      "roles": [
+        "FPT Polytechnic",
+        "Figma UI/UX",
+        "Frontend Code",
+        "AI Creator"
+      ],
+      "image": "assets/images/03_hoc_cung_thay_ho.png",
+      "imageAlt": "Học thiết kế và lập trình cùng Trần Bá Hộ"
+    },
+    {
+      "id": 4,
+      "type": "content_image",
+      "badge": "CƠ HỘI KINH DOANH ONLINE TINH GỌN",
+      "title": "Sở hữu siêu thị online <br /><span class=\"text-highlight\">với 3.000+ sản phẩm</span>",
+      "description": "Mô hình Dropshipping cùng Droppii: Không lo vốn ôm hàng, không tự đóng gói giao hàng, đồng hành hướng dẫn 1-1 cách xây dựng kênh tiếp thị đa kênh hiệu quả.",
+      "primaryBtn": {
+        "text": "Khám phá Droppii",
+        "link": "#kinh-doanh"
+      },
+      "secondaryBtn": {
+        "text": "Đăng ký đồng hành",
+        "link": "#lien-he"
+      },
+      "roles": [
+        "Dropshipping",
+        "Không vốn nhập",
+        "App tự động",
+        "Đồng hành 1-1"
+      ],
+      "image": "assets/images/04_kinh_doanh_droppii.png",
+      "imageAlt": "Hệ sinh thái kinh doanh online Droppii"
+    }
+  ],
+  "courses": [
+    {
+      "id": 1,
+      "title": "Thiết kế chuyên nghiệp",
+      "slug": "thiet-ke-chuyen-nghiep",
+      "image": "assets/images/courses/khoahoc_design.png",
+      "label": "Học Online",
+      "format": "Google Meet",
+      "description": "Học cách xây dựng sản phẩm thiết kế chuyên nghiệp từ chỉnh sửa hình ảnh, thiết kế vector đến ứng dụng AI để tăng tốc quy trình sáng tạo.",
+      "skills": [
+        "Adobe Photoshop",
+        "Adobe Illustrator",
+        "AI hỗ trợ thiết kế"
+      ],
+      "active": true
+    },
+    {
+      "id": 2,
+      "title": "Editor chuyên nghiệp",
+      "slug": "editor-chuyen-nghiep",
+      "image": "assets/images/courses/khoahoc_edit.png",
+      "label": "Học Online",
+      "format": "Google Meet",
+      "description": "Phát triển kỹ năng dựng video, xử lý hình ảnh chuyển động, hiệu ứng và sản xuất nội dung ngắn phục vụ TikTok, Reels, YouTube và truyền thông.",
+      "skills": [
+        "Adobe Premiere",
+        "Adobe After Effects",
+        "CapCut"
+      ],
+      "active": true
+    },
+    {
+      "id": 3,
+      "title": "Thiết kế UI/UX",
+      "slug": "ui-ux",
+      "image": "assets/images/courses/khoahoc_uiux.png",
+      "label": "Học Online",
+      "format": "Google Meet",
+      "description": "Học quy trình thiết kế giao diện website và ứng dụng, từ tư duy trải nghiệm người dùng đến xây dựng prototype bằng Figma và AI.",
+      "skills": [
+        "Tư duy thiết kế",
+        "UI/UX cơ bản",
+        "Figma",
+        "AI hỗ trợ UI/UX"
+      ],
+      "active": true
+    },
+    {
+      "id": 4,
+      "title": "Thiết kế thực chiến",
+      "slug": "thiet-ke-thuc-chien",
+      "image": "assets/images/courses/khoahoc_event.png",
+      "label": "Học Online",
+      "format": "Google Meet",
+      "description": "Tập trung vào các bài tập thực tế như banner, poster, hình ảnh sự kiện và bộ nhận diện nội dung dành cho Facebook, TikTok và các kênh Social Media.",
+      "skills": [
+        "Thiết kế hình ảnh sự kiện",
+        "Thiết kế truyền thông",
+        "Xây dựng thương hiệu Social",
+        "Thiết kế nội dung kinh doanh"
+      ],
+      "active": true
+    },
+    {
+      "id": 5,
+      "title": "AI cơ bản",
+      "slug": "ai-co-ban",
+      "image": "assets/images/courses/khoahoc_ai.png",
+      "label": "Học Online",
+      "format": "Google Meet",
+      "description": "Làm quen với các công cụ AI thiết thực để tạo nội dung, slide, hình ảnh và video phục vụ công việc, học tập hoặc kinh doanh.",
+      "skills": [
+        "Công cụ AI phổ biến",
+        "AI tạo slide",
+        "AI tạo hình ảnh",
+        "AI tạo video",
+        "AI hỗ trợ nội dung"
+      ],
+      "active": true
+    }
+  ],
+  "designPortfolio": [
+    {
+      "id": 1,
+      "title": "Nexus Coffee & Roastery",
+      "category": "Logo",
+      "image": "assets/images/design-01.svg",
+      "description": "Hệ thống nhận diện thương hiệu và thiết kế logo tối giản cho chuỗi cà phê rang xay cao cấp.",
+      "client": "Nexus Coffee Group",
+      "year": "2026",
+      "tags": [
+        "Logo",
+        "Typography",
+        "Minimalist"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "FPT TechFest 2026 Key Visual",
+      "category": "Sự kiện",
+      "image": "assets/images/design-02.svg",
+      "description": "Bộ nhận diện sự kiện công nghệ & triển lãm đồ họa quy mô 2.000 sinh viên tại FPT Polytechnic.",
+      "client": "FPT Polytechnic",
+      "year": "2026",
+      "tags": [
+        "Key Visual",
+        "Banner",
+        "Standee",
+        "Backdrop"
+      ]
+    },
+    {
+      "id": 3,
+      "title": "EcoGreen Organic Packaging",
+      "category": "Branding",
+      "image": "assets/images/design-03.svg",
+      "description": "Quy chuẩn bao bì và bộ nhận diện thương hiệu sản phẩm nông sản hữu cơ xuất khẩu.",
+      "client": "EcoGreen Farm",
+      "year": "2025",
+      "tags": [
+        "Packaging",
+        "Brand Identity",
+        "Label Design"
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Aura Cosmetics Social Kit",
+      "category": "Social",
+      "image": "assets/images/design-04.svg",
+      "description": "Bộ ấn phẩm truyền thông đa kênh mạng xã hội chuẩn tỉ lệ cho Facebook, TikTok và Reels.",
+      "client": "Aura Cosmetics",
+      "year": "2026",
+      "tags": [
+        "Social Media",
+        "Post Template",
+        "Ad Creative"
+      ]
+    },
+    {
+      "id": 5,
+      "title": "FinTrack Logo & App Icon",
+      "category": "Logo",
+      "image": "assets/images/design-05.svg",
+      "description": "Thiết kế biểu tượng nhận diện và icon ứng dụng quản lý chi tiêu cá nhân thông minh.",
+      "client": "FinTrack Vietnam",
+      "year": "2025",
+      "tags": [
+        "Logo",
+        "App Icon",
+        "Fintech"
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Zenith Studio Guidelines",
+      "category": "Branding",
+      "image": "assets/images/design-06.svg",
+      "description": "Cẩm nang quy chuẩn sử dụng logo, màu sắc, font chữ và phong cách hình ảnh toàn diện.",
+      "client": "Zenith Creative",
+      "year": "2025",
+      "tags": [
+        "Branding",
+        "Brandbook",
+        "Guidelines",
+        "Color System"
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Design Expo & Workshop 2026",
+      "category": "Sự kiện",
+      "image": "assets/images/design-07.svg",
+      "description": "Bộ ấn phẩm toàn diện gồm poster sự kiện, backdrop sân khấu và standee triển lãm sáng tạo.",
+      "client": "FPT Polytechnic Creativity Hub",
+      "year": "2026",
+      "tags": [
+        "Sự kiện",
+        "Workshop",
+        "Poster",
+        "Backdrop"
+      ]
+    },
+    {
+      "id": 8,
+      "title": "Kairos Fashion Social Campaign",
+      "category": "Social",
+      "image": "assets/images/design-08.svg",
+      "description": "Hệ thống template bài đăng mạng xã hội, story TikTok và banner quảng cáo chuyển đổi cao.",
+      "client": "Kairos Fashion Vietnam",
+      "year": "2026",
+      "tags": [
+        "Social",
+        "Social Media",
+        "Post Template",
+        "Campaign"
+      ]
+    }
+  ],
+  "webProjects": [
+    {
+      "id": 1,
+      "title": "Aura Boutique Online Store",
+      "category": "Shop",
+      "type": "E-Commerce",
+      "tech": "HTML5 · CSS3 · JavaScript · WooCommerce",
+      "image": "assets/images/web-01.svg",
+      "description": "Website bán hàng thời trang cao cấp với giao diện thanh lịch, giỏ hàng 1 chạm và kết nối Zalo tự động.",
+      "demoUrl": "https://auraboutique.vn",
+      "highlights": [
+        "Tải trang dưới 1.2s",
+        "Tối ưu đặt hàng nhanh",
+        "Đồng bộ đơn hàng"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Graphic Masterclass Landing Page",
+      "category": "Landing Page",
+      "type": "High-Converting Page",
+      "tech": "HTML5 · Vanilla CSS · JavaScript thuần",
+      "image": "assets/images/web-02.svg",
+      "description": "Trang đích giới thiệu khoá học thiết kế đồ họa thực chiến, tối ưu tỉ lệ chuyển đổi lead đạt 14.8%.",
+      "demoUrl": "https://masterclass.design.vn",
+      "highlights": [
+        "Form đăng ký thông minh",
+        "Tương thích TikTok Browser",
+        "Lighthouse 98/100"
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Vinh Corp Construction Portal",
+      "category": "Doanh nghiệp",
+      "type": "Corporate Website",
+      "tech": "WordPress · Custom Theme · PHP",
+      "image": "assets/images/web-03.svg",
+      "description": "Website giới thiệu năng lực tổng thầu xây dựng B2B với danh mục dự án tương tác mượt mà.",
+      "demoUrl": "https://vinhgroup.com.vn",
+      "highlights": [
+        "Hồ sơ năng lực online",
+        "Bộ lọc dự án nhanh",
+        "Chuẩn SEO Google"
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Alex Nguyen Creator Portfolio",
+      "category": "Cá nhân",
+      "type": "Personal Portfolio",
+      "tech": "HTML5 · CSS Grid · Minimal JS",
+      "image": "assets/images/web-04.svg",
+      "description": "Website cá nhân dành cho nhiếp ảnh gia thương mại với gallery ảnh toàn màn hình và lightbox tinh tế.",
+      "demoUrl": "https://alexphotography.me",
+      "highlights": [
+        "Gallery sắc nét",
+        "Dark/Light tương phản",
+        "Bố cục bất đối xứng"
+      ]
+    },
+    {
+      "id": 5,
+      "title": "POSOrder Cloud App Dashboard",
+      "category": "Web App",
+      "type": "SaaS Dashboard",
+      "tech": "JavaScript ES6 · REST API · Chart.js",
+      "image": "assets/images/web-05.svg",
+      "description": "Ứng dụng web quản lý đơn hàng, doanh số và tồn kho trực quan dành cho người bán hàng đa kênh.",
+      "demoUrl": "https://app.posorder.io",
+      "highlights": [
+        "Thống kê thời gian thực",
+        "Giao diện tinh gọn",
+        "Hỗ trợ di động"
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Droppii Smart Supermarket Hub",
+      "category": "Shop",
+      "type": "Affiliate Store",
+      "tech": "HTML5 · CSS3 · Droppii API Integration",
+      "image": "assets/images/web-06.svg",
+      "description": "Website siêu thị trực tuyến kết nối hệ sinh thái 3.000+ sản phẩm chính hãng không cần tồn kho.",
+      "demoUrl": "https://sieuthidroppii.online",
+      "highlights": [
+        "Tự động cập nhật sản phẩm",
+        "Đặt hàng chuyển thẳng",
+        "Chuẩn di động"
+      ]
+    }
+  ],
+  "services": [
+    {
+      "id": "design-logo",
+      "number": "01",
+      "title": "Thiết kế Logo",
+      "summary": "Tạo dấu ấn nhận diện độc bản, tinh tế và dễ ghi nhớ cho cá nhân và thương hiệu.",
+      "items": [
+        "Logo cá nhân & Chuyên gia",
+        "Logo doanh nghiệp & Startup",
+        "Logo thương hiệu sản phẩm",
+        "Bộ biểu tượng ứng dụng (App Icon)"
+      ]
+    },
+    {
+      "id": "design-event",
+      "number": "02",
+      "title": "Hình ảnh sự kiện & Social",
+      "summary": "Bộ ấn phẩm truyền thông đồng bộ, thu hút ánh nhìn trên mạng xã hội và không gian sự kiện.",
+      "items": [
+        "Key Visual, Poster, Backdrop",
+        "Banner quảng cáo đa kích thước",
+        "Social Media Kit (Facebook / TikTok)",
+        "Thumbnail video triệu view"
+      ]
+    },
+    {
+      "id": "design-brand",
+      "number": "03",
+      "title": "Bộ nhận diện thương hiệu",
+      "summary": "Quy chuẩn hoá toàn bộ tài liệu và ấn phẩm tiếp thị giúp khẳng định uy tín lâu dài.",
+      "items": [
+        "Brand Identity & Brandbook",
+        "Hệ thống màu sắc & Typography",
+        "Ấn phẩm văn phòng & Danh thiếp",
+        "Bao bì nhãn mác sản phẩm"
+      ]
+    },
+    {
+      "id": "web-uiux",
+      "number": "04",
+      "title": "Thiết kế UI/UX",
+      "summary": "Nghiên cứu hành vi người dùng và tạo mẫu giao diện đẹp, trực quan, dễ thao tác trên mọi màn hình.",
+      "items": [
+        "Wireframe & Prototype tương tác",
+        "Thiết kế UI Desktop & Mobile App",
+        "Tối ưu luồng hành vi đặt hàng",
+        "Design System tái sử dụng"
+      ]
+    },
+    {
+      "id": "web-landing",
+      "number": "05",
+      "title": "Landing Page chuyển đổi",
+      "summary": "Trang đích tập trung cao độ vào hành động mua hàng hoặc để lại thông tin tư vấn.",
+      "items": [
+        "Landing page sản phẩm/dịch vụ",
+        "Landing page cá nhân/khoá học",
+        "Tích hợp form & Google Sheet/Zalo",
+        "Tốc độ tải trang tức thì (< 1.5s)"
+      ]
+    },
+    {
+      "id": "web-business",
+      "number": "06",
+      "title": "Website kinh doanh trọn gói",
+      "summary": "Giải pháp đưa cửa hàng lên Internet hoàn chỉnh, dễ quản trị và sẵn sàng kinh doanh.",
+      "items": [
+        "Website bán hàng Shop Có Web",
+        "Website giới thiệu doanh nghiệp",
+        "Website WordPress dễ chỉnh sửa",
+        "Website lập trình riêng theo yêu cầu"
+      ]
+    }
+  ],
+  "droppii": {
+    "title": "Sở hữu siêu thị online cùng Droppii",
+    "subtitle": "Kinh doanh online tinh gọn – Hệ sinh thái sản phẩm chính hãng đa dạng",
+    "description": "Mô hình kinh doanh Dropshipping hiện đại giúp bạn sở hữu ngay một siêu thị trực tuyến với hơn 3.000 sản phẩm chất lượng cao mà không cần ôm hàng, không lo đóng gói vận chuyển, được tôi đồng hành hướng dẫn 1-1 từ tư duy chọn sản phẩm đến cách xây dựng kênh bán hàng online hiệu quả.",
+    "benefits": [
+      "Không áp lực vốn nhập hàng – Không lo tồn kho",
+      "Droppii đóng gói và giao hàng tận tay khách hàng",
+      "Quản lý toàn bộ đơn hàng và thu nhập qua ứng dụng di động",
+      "Được hỗ trợ xây dựng website bán hàng riêng biệt và tối ưu kênh cá nhân"
+    ]
+  },
+  "articles": [
+    {
+      "id": 1,
+      "title": "Tư duy thiết kế Logo không lỗi thời cho người mới bắt đầu",
+      "category": "Thiết kế",
+      "date": "28/02/2026",
+      "image": "assets/images/article-01.svg",
+      "description": "5 nguyên tắc cốt lõi giúp logo của bạn ghi nhớ ngay từ ánh nhìn đầu tiên và hoạt động sắc nét trên mọi chất liệu.",
+      "content": "Một logo tốt không phải là logo chứa đựng quá nhiều hình vẽ phức tạp, mà là logo truyền tải đúng bản chất thương hiệu một cách giản dị nhất. Khi thiết kế, hãy luôn bắt đầu từ đen trắng (monochrome), đảm bảo logo vẫn rõ nét ở kích thước chỉ 16x16px trên thanh trình duyệt trước khi thêm màu sắc."
+    },
+    {
+      "id": 2,
+      "title": "Vì sao người bán hàng online năm 2026 nhất định cần có website riêng?",
+      "category": "Website",
+      "date": "24/02/2026",
+      "image": "assets/images/article-02.svg",
+      "description": "Phân tích rủi ro khi chỉ phụ thuộc vào mạng xã hội và cách một trang web tinh gọn giúp tăng uy tín bán hàng.",
+      "content": "Mạng xã hội là nơi tuyệt vời để tiếp cận khách hàng mới, nhưng website mới là 'ngôi nhà' thực sự thuộc về bạn. Một website riêng giúp bạn không bị trôi bài, khách hàng dễ dàng tra cứu toàn bộ danh mục sản phẩm và bấm gọi hotline hoặc chat Zalo chỉ trong 1 giây."
+    },
+    {
+      "id": 3,
+      "title": "Ứng dụng AI để tăng tốc quy trình thiết kế và lập trình web",
+      "category": "AI",
+      "date": "18/02/2026",
+      "image": "assets/images/article-03.svg",
+      "description": "Cách tôi kết hợp các công cụ AI hiện đại để giảm 50% thời gian tạo mockup và viết mã nguồn chuẩn mực.",
+      "content": "AI không thay thế người làm sáng tạo, nhưng người biết dùng AI sẽ làm việc nhanh gấp nhiều lần. Tôi ứng dụng AI để sinh ý tưởng cấu trúc layout, tự động hoá kiểm tra lỗi CSS/JS và tối ưu hóa từ khóa SEO cho từng trang web."
+    },
+    {
+      "id": 4,
+      "title": "Khởi động kinh doanh online tinh gọn cùng mô hình Droppii",
+      "category": "Kinh doanh",
+      "date": "12/02/2026",
+      "image": "assets/images/article-04.svg",
+      "description": "Chia sẻ kinh nghiệm thực tế về cách vận hành một cửa hàng trực tuyến với hơn 3.000 sản phẩm mà không cần kho bãi.",
+      "content": "Đối với người bận rộn như giảng viên hoặc nhân viên văn phòng, mô hình Dropshipping của Droppii giải quyết triệt để bài toán vốn và vận hành. Bạn chỉ cần tập trung vào việc tư vấn và chăm sóc khách hàng bằng chính uy tín cá nhân của mình."
+    },
+    {
+      "id": 5,
+      "title": "Lời khuyên dành cho sinh viên Thiết kế & CNTT trước kỳ tốt nghiệp",
+      "category": "Giảng dạy",
+      "date": "05/02/2026",
+      "image": "assets/images/article-05.svg",
+      "description": "Những gì nhà tuyển dụng thực sự tìm kiếm ở một ứng viên trẻ và cách hoàn thiện đồ án thực chiến.",
+      "content": "Nhà tuyển dụng không chỉ xem sản phẩm cuối cùng mà họ nhìn vào 'Process' (quy trình tư duy giải quyết vấn đề). Một portfolio gồm 3 dự án giải quyết vấn đề thực tế với case study rõ ràng luôn giá trị hơn 10 bài tập mô phỏng không có chiều sâu."
+    },
+    {
+      "id": 6,
+      "title": "Tối ưu tốc độ tải trang đạt 95+ điểm Google Lighthouse",
+      "category": "Website",
+      "date": "29/01/2026",
+      "image": "assets/images/article-06.svg",
+      "description": "Bí quyết tinh gọn JavaScript thuần, nén ảnh SVG/WebP và cấu trúc CSS chuẩn không cần thư viện cồng kềnh.",
+      "content": "Tốc độ tải trang ảnh hưởng trực tiếp đến tỉ lệ chuyển đổi đơn hàng và thứ hạng Google. Bằng cách loại bỏ các framework thừa thãi, tải chậm YouTube iframe và tối ưu CSS Variables, website của bạn sẽ mở ra ngay lập tức trên cả kết nối 4G yếu."
+    },
+    {
+      "id": 7,
+      "title": "Quy tắc tỷ lệ vàng và bố cục phân cấp trong UI/UX hiện đại",
+      "category": "Thiết kế",
+      "date": "22/01/2026",
+      "image": "assets/images/article-01.svg",
+      "description": "Cách áp dụng hệ thống lưới 8pt và nhịp điệu thị giác giúp người dùng tiếp nhận thông tin dễ dàng nhất.",
+      "content": "Bố cục trực quan giúp định hướng mắt người nhìn một cách tự nhiên. Khi thiết kế trang đích, việc phân cấp tiêu đề, khoảng trắng và màu sắc nút CTA theo thứ tự ưu tiên sẽ gia tăng rõ rệt thời gian onsite của khách hàng."
+    },
+    {
+      "id": 8,
+      "title": "Xây dựng thương hiệu cá nhân bền vững cho Freelancer và Giảng viên",
+      "category": "Kinh doanh",
+      "date": "15/01/2026",
+      "image": "assets/images/article-04.svg",
+      "description": "Hành trình định vị chuyên môn và tạo dựng tệp khách hàng trung thành từ chính những giá trị thật.",
+      "content": "Thương hiệu cá nhân không phải là phô trương mà là sự nhất quán trong chất lượng sản phẩm và thái độ phục vụ. Một website cá nhân chuyên nghiệp là bằng chứng thuyết phục nhất khẳng định năng lực của bạn."
+    },
+    {
+      "id": 9,
+      "title": "Tổng quan các xu hướng Web Design thống trị năm 2026",
+      "category": "Website",
+      "date": "10/01/2026",
+      "image": "assets/images/article-02.svg",
+      "description": "Minimalism cao cấp, typography biểu cảm và tốc độ phản hồi siêu nhanh đang dẫn đầu trải nghiệm số.",
+      "content": "Người dùng ngày càng thiếu kiên nhẫn với các hiệu ứng nặng nề. Xu hướng hiện nay quay về với sự tối giản sang trọng: kiểu chữ sắc nét, khoảng trắng hào phóng và điều hướng mượt mà không độ trễ."
+    },
+    {
+      "id": 10,
+      "title": "Phương pháp tự học lập trình Frontend hiệu quả cho Designer",
+      "category": "Giảng dạy",
+      "date": "04/01/2026",
+      "image": "assets/images/article-05.svg",
+      "description": "Lộ trình từ hiểu biết cơ bản về HTML/CSS đến làm chủ Flexbox, Grid và JavaScript DOM tương tác.",
+      "content": "Một Designer biết viết code sẽ có lợi thế vượt trội khi làm việc với lập trình viên và hiện thực hóa đúng 100% bản vẽ thiết kế. Hãy bắt đầu từ việc clone lại các giao diện đẹp bằng CSS thuần trước khi học framework."
+    },
+    {
+      "id": 11,
+      "title": "Chiến lược nội dung thu hút khách hàng tiềm năng qua Landing Page",
+      "category": "Kinh doanh",
+      "date": "28/12/2025",
+      "image": "assets/images/article-03.svg",
+      "description": "Công thức viết Headline và Micro-copy chạm đúng nỗi đau của khách hàng để kích hoạt hành động mua.",
+      "content": "Khách hàng không mua tính năng, họ mua kết quả. Hãy nói về lợi ích thực tế mà sản phẩm mang lại và đưa ra bằng chứng xác thực (social proof) ngay trước các nút bấm kêu gọi hành động."
+    },
+    {
+      "id": 12,
+      "title": "Tích hợp Generative AI vào quy trình sáng tạo: Cơ hội hay thách thức?",
+      "category": "AI",
+      "date": "20/12/2025",
+      "image": "assets/images/article-06.svg",
+      "description": "Phân tích vai trò của AI như một cộng sự đắc lực giúp người làm sáng tạo bứt phá giới hạn.",
+      "content": "AI xử lý các tác vụ lặp đi lặp lại để bạn dành trọn tâm huyết cho tư duy chiến lược và cảm xúc nghệ thuật. Làm chủ công nghệ mới chính là chìa khóa để phát triển nghề nghiệp lâu dài."
+    }
+  ],
+  "gallery": [
+    {
+      "id": 1,
+      "title": "Giờ giảng dạy Thiết kế Đồ họa tại FPT Polytechnic",
+      "category": "Giảng dạy",
+      "image": "assets/images/gallery-01.svg",
+      "caption": "Truyền cảm hứng và rèn luyện tư duy thị giác thực tế cho các bạn sinh viên."
+    },
+    {
+      "id": 2,
+      "title": "Workshop UI/UX Design & Frontend Essentials",
+      "category": "Workshop",
+      "image": "assets/images/gallery-02.svg",
+      "caption": "Chia sẻ quy trình chuẩn từ bản vẽ thiết kế Figma sang giao diện web mượt mà."
+    },
+    {
+      "id": 3,
+      "title": "Hội đồng đánh giá Đồ án Tốt nghiệp CNTT & TKĐH",
+      "category": "Sự kiện",
+      "image": "assets/images/gallery-03.svg",
+      "caption": "Đồng hành và phản biện giúp sinh viên hoàn thiện sản phẩm đầu ra chất lượng cao."
+    },
+    {
+      "id": 4,
+      "title": "Ban giám khảo Cuộc thi Sáng tạo Thiết kế Trẻ",
+      "category": "Sự kiện",
+      "image": "assets/images/gallery-04.svg",
+      "caption": "Khích lệ các ý tưởng đột phá và tính ứng dụng của thế hệ sáng tạo mới."
+    },
+    {
+      "id": 5,
+      "title": "Tư vấn kiến trúc dự án Shop Có Web cho chủ cửa hàng",
+      "category": "Dự án",
+      "image": "assets/images/gallery-05.svg",
+      "caption": "Lên lộ trình đưa sản phẩm lên website giúp tinh gọn quy trình bán hàng online."
+    },
+    {
+      "id": 6,
+      "title": "Buổi chia sẻ kinh nghiệm kinh doanh online Droppii",
+      "category": "Kinh doanh",
+      "image": "assets/images/gallery-06.svg",
+      "caption": "Gặp gỡ, hướng dẫn và kết nối cùng các đối tác khởi nghiệp tinh gọn."
+    },
+    {
+      "id": 7,
+      "title": "Không gian làm việc & Studio nghiên cứu giải pháp số",
+      "category": "Cá nhân",
+      "image": "assets/images/gallery-07.svg",
+      "caption": "Nơi những ý tưởng về thiết kế, mã nguồn và kinh doanh được thử nghiệm liên tục."
+    },
+    {
+      "id": 8,
+      "title": "Hội thảo Ứng dụng AI trong Sáng tạo & Lập trình",
+      "category": "Workshop",
+      "image": "assets/images/gallery-08.svg",
+      "caption": "Cập nhật các công nghệ tiên phong để nâng cao hiệu suất làm việc."
+    },
+    {
+      "id": 9,
+      "title": "Buổi hướng dẫn thực hành Typography & Layout nâng cao",
+      "category": "Giảng dạy",
+      "image": "assets/images/gallery-01.svg",
+      "caption": "Phân tích cấu trúc phân cấp thị giác và nghệ thuật sử dụng kiểu chữ trong thiết kế thương hiệu."
+    },
+    {
+      "id": 10,
+      "title": "Chia sẻ kinh nghiệm thiết kế Portfolio ấn tượng cho sinh viên",
+      "category": "Workshop",
+      "image": "assets/images/gallery-02.svg",
+      "caption": "Bí quyết trình bày case study chuyên nghiệp thu hút nhà tuyển dụng hàng đầu."
+    },
+    {
+      "id": 11,
+      "title": "Lễ vinh danh các nhóm sinh viên đạt giải xuất sắc kỳ Fall 2025",
+      "category": "Sự kiện",
+      "image": "assets/images/gallery-03.svg",
+      "caption": "Ghi nhận nỗ lực sáng tạo và hoàn thiện dự án thực tế của các tài năng trẻ."
+    },
+    {
+      "id": 12,
+      "title": "Triển lãm sản phẩm thiết kế bao bì & đồ họa nhận diện",
+      "category": "Sự kiện",
+      "image": "assets/images/gallery-04.svg",
+      "caption": "Không gian trưng bày các ấn phẩm in ấn và sản phẩm thương mại thực chiến."
+    },
+    {
+      "id": 13,
+      "title": "Bàn giao website Shop Có Web cho chuỗi thời trang thiết kế",
+      "category": "Dự án",
+      "image": "assets/images/gallery-05.svg",
+      "caption": "Hướng dẫn chủ shop quản trị đơn hàng và đồng bộ kênh bán hàng mạng xã hội."
+    },
+    {
+      "id": 14,
+      "title": "Tọa đàm chiến lược chuyển đổi số cho doanh nghiệp vừa và nhỏ",
+      "category": "Kinh doanh",
+      "image": "assets/images/gallery-06.svg",
+      "caption": "Giải pháp xây dựng website tối ưu chuyển đổi và chăm sóc khách hàng tự động."
+    },
+    {
+      "id": 15,
+      "title": "Thử nghiệm công nghệ Web tương tác 3D & Micro-animations",
+      "category": "Cá nhân",
+      "image": "assets/images/gallery-07.svg",
+      "caption": "Nghiên cứu các hiệu ứng chuyển động mượt mà nâng tầm trải nghiệm người dùng."
+    },
+    {
+      "id": 16,
+      "title": "Khóa đào tạo chuyên sâu Prompt Engineering cho Designer",
+      "category": "Workshop",
+      "image": "assets/images/gallery-08.svg",
+      "caption": "Ứng dụng Midjourney & ChatGPT hỗ trợ phác thảo ý tưởng nhanh chóng."
+    }
+  ],
+  "youtubeVideos": [
+    {
+      "id": 1,
+      "title": "Hướng Dẫn Thiết Kế Giao Diện UI/UX Bằng Figma Cơ Bản Đến Nâng Cao",
+      "videoId": "dQw4w9WgXcQ",
+      "duration": "24:15",
+      "thumbnail": "assets/images/video-01.svg",
+      "category": "UI/UX Design",
+      "description": "Video hướng dẫn từng bước tạo wireframe, thiết kế component và prototype tương tác mượt mà trong Figma."
+    },
+    {
+      "id": 2,
+      "title": "Xây Dựng Website Kinh Doanh Chuẩn SEO & Mobile Bằng HTML/CSS/JS",
+      "videoId": "dQw4w9WgXcQ",
+      "duration": "38:40",
+      "thumbnail": "assets/images/video-02.svg",
+      "category": "Web Development",
+      "description": "Tự tay code một landing page bán hàng chuyên nghiệp từ con số 0 với tốc độ tải trang cực nhanh."
+    },
+    {
+      "id": 3,
+      "title": "Mô Hình Droppii Là Gì? Bí Quyết Bán Hàng Online Tinh Gọn Không Cần Vốn",
+      "videoId": "dQw4w9WgXcQ",
+      "duration": "19:20",
+      "thumbnail": "assets/images/video-03.svg",
+      "category": "Online Business",
+      "description": "Giải thích chi tiết quy trình vận hành Dropshipping và kinh nghiệm thực chiến tạo nguồn thu nhập thứ 2."
+    },
+    {
+      "id": 4,
+      "title": "Quy Trình Triển Khai Website 'Shop Có Web' Từ A Đến Z Trong 48 Giờ",
+      "videoId": "dQw4w9WgXcQ",
+      "duration": "31:10",
+      "thumbnail": "assets/images/video-04.svg",
+      "category": "Shop Có Web",
+      "description": "Case study thực tế giúp một shop thời trang nhỏ xây dựng kênh bán hàng trực tuyến và tăng gấp đôi lượng đơn."
+    },
+    {
+      "id": 5,
+      "title": "Tư Duy Chọn Màu Sắc & Bảng Màu Chuẩn Cho Thiết Kế Nhận Diện Thương Hiệu",
+      "videoId": "dQw4w9WgXcQ",
+      "duration": "22:05",
+      "thumbnail": "assets/images/video-01.svg",
+      "category": "Graphic Design",
+      "description": "Nguyên lý phối màu và ứng dụng bảng màu trong thiết kế logo, ấn phẩm truyền thông và website."
+    },
+    {
+      "id": 6,
+      "title": "Tối Ưu Tốc Độ Tải Trang & Điểm Số Google Lighthouse Trên 95 Điểm",
+      "videoId": "dQw4w9WgXcQ",
+      "duration": "27:45",
+      "thumbnail": "assets/images/video-02.svg",
+      "category": "Web Performance",
+      "description": "Kỹ thuật tối ưu hóa tài nguyên hình ảnh, JavaScript thuần và cấu trúc CSS tinh gọn."
+    },
+    {
+      "id": 7,
+      "title": "Chiến Lược Tìm Kiếm Sản Phẩm Ngách Bán Chạy Cùng Droppii 2026",
+      "videoId": "dQw4w9WgXcQ",
+      "duration": "25:30",
+      "thumbnail": "assets/images/video-03.svg",
+      "category": "Online Business",
+      "description": "Phân tích nhu cầu thị trường và cách chọn lựa danh mục sản phẩm có tỉ lệ tái mua cao."
+    },
+    {
+      "id": 8,
+      "title": "Bí Quyết Gắn Link Bio TikTok & Reels Tăng Tỉ Lệ Đặt Hàng Tự Động",
+      "videoId": "dQw4w9WgXcQ",
+      "duration": "18:50",
+      "thumbnail": "assets/images/video-04.svg",
+      "category": "Marketing & Web",
+      "description": "Tối ưu trang đích di động giúp khách hàng mua hàng ngay khi lướt mạng xã hội."
+    },
+    {
+      "id": 9,
+      "title": "Hướng Dẫn Thiết Kế Poster Sự Kiện Bằng Photoshop & Illustrator",
+      "videoId": "dQw4w9WgXcQ",
+      "duration": "35:10",
+      "thumbnail": "assets/images/video-01.svg",
+      "category": "Graphic Design",
+      "description": "Quy trình thiết kế key visual và xuất file in ấn chuẩn kích thước cho sự kiện lớn."
+    },
+    {
+      "id": 10,
+      "title": "Lập Trình Form Liên Hệ Thu Hút Khách Hàng Chuẩn Responsive & Validation",
+      "videoId": "dQw4w9WgXcQ",
+      "duration": "29:15",
+      "thumbnail": "assets/images/video-02.svg",
+      "category": "Web Development",
+      "description": "Xử lý kiểm tra dữ liệu đầu vào và kết nối lưu trữ lead khách hàng an toàn."
+    },
+    {
+      "id": 11,
+      "title": "Kỹ Năng Tư Vấn & Chăm Sóc Khách Hàng Bán Hàng Online Tinh Gọn",
+      "videoId": "dQw4w9WgXcQ",
+      "duration": "21:40",
+      "thumbnail": "assets/images/video-03.svg",
+      "category": "Online Business",
+      "description": "Nghệ thuật thấu hiểu khách hàng và giải quyết vấn đề giúp gia tăng doanh số bền vững."
+    },
+    {
+      "id": 12,
+      "title": "Tổng Hợp Công Cụ AI Hàng Đầu Dành Cho Designer & Web Developer 2026",
+      "videoId": "dQw4w9WgXcQ",
+      "duration": "33:25",
+      "thumbnail": "assets/images/video-04.svg",
+      "category": "AI & Tech",
+      "description": "Khám phá các công cụ AI giúp nhân đôi năng suất làm việc mỗi ngày."
+    }
+  ]
+}

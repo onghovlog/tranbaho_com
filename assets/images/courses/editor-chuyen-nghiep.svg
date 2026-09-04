@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" fill="none">
+  <defs>
+    <linearGradient id="bgGrad2" x1="0" y1="0" x2="640" y2="360" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f8fafc"/>
+      <stop offset="1" stop-color="#eff6ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" rx="12" fill="url(#bgGrad2)"/>
+  <rect x="24" y="24" width="592" height="312" rx="10" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.5"/>
+  
+  <!-- Video Player Preview Area -->
+  <rect x="54" y="54" width="340" height="150" rx="8" fill="#0f172a"/>
+  <!-- Play Icon -->
+  <circle cx="224" cy="129" r="28" fill="#f58220"/>
+  <polygon points="218,117 236,129 218,141" fill="#ffffff"/>
+  <text x="74" y="186" font-family="'Inter', sans-serif" font-size="11" font-weight="700" fill="#94a3b8">00:02:45 / 4K 60FPS</text>
+  
+  <!-- Timeline tracks -->
+  <rect x="54" y="214" width="340" height="92" rx="8" fill="#1e293b"/>
+  <!-- Track 1 Video -->
+  <rect x="64" y="224" width="140" height="22" rx="4" fill="#3b82f6"/>
+  <rect x="210" y="224" width="170" height="22" rx="4" fill="#6366f1"/>
+  <!-- Track 2 Audio -->
+  <rect x="64" y="252" width="220" height="18" rx="4" fill="#10b981"/>
+  <rect x="290" y="252" width="90" height="18" rx="4" fill="#f59e0b"/>
+  <!-- Playhead line -->
+  <line x1="180" y1="216" x2="180" y2="300" stroke="#ef4444" stroke-width="2"/>
+  <polygon points="174,216 186,216 180,224" fill="#ef4444"/>
+
+  <!-- Right side tools -->
+  <rect x="414" y="54" width="172" height="74" rx="8" fill="#fdf2f8" stroke="#fbcfe8"/>
+  <text x="430" y="86" font-family="'Inter', sans-serif" font-size="14" font-weight="800" fill="#9d174d">Pr • Ae • CapCut</text>
+  <text x="430" y="108" font-family="'Inter', sans-serif" font-size="11" font-weight="600" fill="#db2777">Dựng video đa nền tảng</text>
+  
+  <rect x="414" y="142" width="172" height="74" rx="8" fill="#fff7ed" stroke="#fed7aa"/>
+  <text x="430" y="174" font-family="'Inter', sans-serif" font-size="13" font-weight="800" fill="#c2410c">TIKTOK &amp; REELS</text>
+  <text x="430" y="196" font-family="'Inter', sans-serif" font-size="11" font-weight="600" fill="#ea580c">Viral Short Video</text>
+  
+  <rect x="414" y="230" width="172" height="76" rx="8" fill="#f0fdf4" stroke="#bbf7d0"/>
+  <text x="430" y="262" font-family="'Inter', sans-serif" font-size="13" font-weight="800" fill="#15803d">HIỆU ỨNG VFX</text>
+  <text x="430" y="284" font-family="'Inter', sans-serif" font-size="11" font-weight="600" fill="#16a34a">Chuyển động mượt mà</text>
+</svg>

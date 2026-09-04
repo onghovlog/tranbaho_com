@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" fill="none">
+  <rect width="600" height="450" fill="#f8f9fb"/>
+  <rect x="30" y="30" width="540" height="390" rx="12" fill="#ffffff" stroke="#e5e7eb" stroke-width="2"/>
+  <rect x="60" y="60" width="140" height="140" rx="8" fill="#1877f2" fill-opacity="0.1"/>
+  <rect x="230" y="60" width="140" height="140" rx="8" fill="#f58220" fill-opacity="0.1"/>
+  <rect x="400" y="60" width="140" height="140" rx="8" fill="#10b981" fill-opacity="0.1"/>
+  
+  <text x="130" y="135" font-family="'Inter', sans-serif" font-size="12" font-weight="700" fill="#1877f2" text-anchor="middle">1:1 Post</text>
+  <text x="300" y="135" font-family="'Inter', sans-serif" font-size="12" font-weight="700" fill="#f58220" text-anchor="middle">9:16 Story</text>
+  <text x="470" y="135" font-family="'Inter', sans-serif" font-size="12" font-weight="700" fill="#10b981" text-anchor="middle">Cover Ad</text>
+  
+  <text x="300" y="260" font-family="'Inter', sans-serif" font-size="20" font-weight="800" fill="#1f2937" text-anchor="middle">KAIROS FASHION SOCIAL KIT</text>
+  <text x="300" y="285" font-family="'Inter', sans-serif" font-size="12" font-weight="600" fill="#6b7280" text-anchor="middle">Bộ Template Truyền Thông Mạng Xã Hội Đa Kênh</text>
+  <rect x="220" y="315" width="160" height="32" rx="16" fill="#eff6ff" stroke="#1877f2"/>
+  <text x="300" y="336" font-family="'Inter', sans-serif" font-size="11" font-weight="700" fill="#1877f2" text-anchor="middle">SOCIAL MEDIA FEED</text>
+</svg>

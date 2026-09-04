@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 520" fill="none">
+  <defs>
+    <filter id="cardShadow" x="-10" y="-10" width="720" height="540" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="12" stdDeviation="20" flood-color="#1f2937" flood-opacity="0.08"/>
+    </filter>
+    <linearGradient id="softBg" x1="0" y1="0" x2="700" y2="520" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f8f9fb"/>
+      <stop offset="1" stop-color="#f1f4f9"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="700" height="520" rx="20" fill="url(#softBg)"/>
+  
+  <!-- Subtle Grid Lines -->
+  <path d="M50 0V520M150 0V520M250 0V520M350 0V520M450 0V520M550 0V520M650 0V520" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="4 4"/>
+  <path d="M0 65H700M0 130H700M0 195H700M0 260H700M0 325H700M0 390H700M0 455H700" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="4 4"/>
+
+  <!-- Main Browser Mockup Window -->
+  <g filter="url(#cardShadow)">
+    <rect x="60" y="50" width="460" height="340" rx="12" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.5"/>
+    
+    <!-- Browser Top Bar -->
+    <path d="M60 50H520V86H60V50Z" fill="#f8f9fb"/>
+    <line x1="60" y1="86" x2="520" y2="86" stroke="#e5e7eb" stroke-width="1"/>
+    <!-- Window Controls -->
+    <circle cx="82" cy="68" r="4.5" fill="#f58220"/>
+    <circle cx="98" cy="68" r="4.5" fill="#1877f2" fill-opacity="0.6"/>
+    <circle cx="114" cy="68" r="4.5" fill="#10b981" fill-opacity="0.6"/>
+    
+    <!-- URL Bar -->
+    <rect x="140" y="60" width="220" height="16" rx="8" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+    <text x="155" y="72" font-family="'Inter', sans-serif" font-size="9" font-weight="600" fill="#6b7280">https://shopcoweb.vn</text>
+    
+    <!-- Browser Content -->
+    <!-- Brand banner inside browser -->
+    <rect x="85" y="105" width="410" height="90" rx="8" fill="#fff7ed" stroke="#f58220" stroke-width="1" stroke-dasharray="4 2"/>
+    <text x="105" y="135" font-family="'Inter', sans-serif" font-size="16" font-weight="800" fill="#f58220">THIẾT KẾ &amp; LẬP TRÌNH WEB</text>
+    <text x="105" y="155" font-family="'Inter', sans-serif" font-size="11" font-weight="500" fill="#4b5563">Giao diện chuẩn UI/UX · Tối ưu chuyển đổi · Chuẩn Mobile First</text>
+    <rect x="105" y="168" width="80" height="16" rx="4" fill="#f58220"/>
+    <text x="120" y="179" font-family="'Inter', sans-serif" font-size="8" font-weight="700" fill="#ffffff">KHÁM PHÁ</text>
+
+    <!-- Product Cards inside browser -->
+    <rect x="85" y="210" width="125" height="150" rx="6" fill="#ffffff" stroke="#e5e7eb"/>
+    <rect x="95" y="220" width="105" height="70" rx="4" fill="#f8f9fb"/>
+    <path d="M130 250L145 235L165 255H115" stroke="#f58220" stroke-width="2"/>
+    <rect x="95" y="300" width="80" height="8" rx="2" fill="#1f2937"/>
+    <rect x="95" y="315" width="50" height="6" rx="2" fill="#f58220"/>
+    <rect x="95" y="330" width="105" height="18" rx="4" fill="#1877f2"/>
+    <text x="128" y="342" font-family="'Inter', sans-serif" font-size="8" font-weight="700" fill="#ffffff">XEM NGAY</text>
+
+    <rect x="225" y="210" width="125" height="150" rx="6" fill="#ffffff" stroke="#e5e7eb"/>
+    <rect x="235" y="220" width="105" height="70" rx="4" fill="#f8f9fb"/>
+    <circle cx="287" cy="255" r="18" fill="#fff7ed" stroke="#f58220" stroke-width="1.5"/>
+    <rect x="235" y="300" width="85" height="8" rx="2" fill="#1f2937"/>
+    <rect x="235" y="315" width="45" height="6" rx="2" fill="#f58220"/>
+    <rect x="235" y="330" width="105" height="18" rx="4" fill="#f8f9fb" stroke="#e5e7eb"/>
+    <text x="265" y="342" font-family="'Inter', sans-serif" font-size="8" font-weight="700" fill="#1f2937">CHI TIẾT</text>
+
+    <rect x="365" y="210" width="125" height="150" rx="6" fill="#ffffff" stroke="#e5e7eb"/>
+    <rect x="375" y="220" width="105" height="70" rx="4" fill="#f8f9fb"/>
+    <rect x="390" y="235" width="75" height="40" rx="4" fill="#eff6ff" stroke="#1877f2" stroke-width="1"/>
+    <rect x="375" y="300" width="75" height="8" rx="2" fill="#1f2937"/>
+    <rect x="375" y="315" width="55" height="6" rx="2" fill="#f58220"/>
+    <rect x="375" y="330" width="105" height="18" rx="4" fill="#f8f9fb" stroke="#e5e7eb"/>
+    <text x="405" y="342" font-family="'Inter', sans-serif" font-size="8" font-weight="700" fill="#1f2937">CHI TIẾT</text>
+  </g>
+
+  <!-- Mobile Mockup Overlap on Right -->
+  <g filter="url(#cardShadow)">
+    <rect x="440" y="160" width="200" height="320" rx="24" fill="#ffffff" stroke="#1f2937" stroke-width="4"/>
+    <!-- Phone Notch / Pill -->
+    <rect x="500" y="170" width="80" height="10" rx="5" fill="#1f2937"/>
+    
+    <!-- Phone Screen Content -->
+    <rect x="448" y="188" width="184" height="280" rx="14" fill="#f8f9fb"/>
+    
+    <!-- Header bar -->
+    <rect x="458" y="200" width="24" height="24" rx="6" fill="#f58220"/>
+    <text x="490" y="216" font-family="'Inter', sans-serif" font-size="11" font-weight="800" fill="#1f2937">TRẦN BÁ HỘ</text>
+    
+    <!-- Mobile Hero Card -->
+    <rect x="458" y="232" width="164" height="95" rx="8" fill="#ffffff" stroke="#e5e7eb"/>
+    <rect x="466" y="242" width="60" height="12" rx="3" fill="#fff7ed"/>
+    <text x="470" y="251" font-family="'Inter', sans-serif" font-size="7" font-weight="700" fill="#f58220">FPT POLYTECHNIC</text>
+    <text x="466" y="272" font-family="'Inter', sans-serif" font-size="12" font-weight="800" fill="#1f2937">Kinh Doanh</text>
+    <text x="466" y="286" font-family="'Inter', sans-serif" font-size="12" font-weight="800" fill="#f58220">Cần Có Web</text>
+    <rect x="466" y="296" width="75" height="18" rx="4" fill="#1877f2"/>
+    <text x="476" y="308" font-family="'Inter', sans-serif" font-size="8" font-weight="700" fill="#ffffff">NHẬN TƯ VẤN</text>
+
+    <!-- Mobile Mini Service Cards -->
+    <rect x="458" y="335" width="78" height="60" rx="6" fill="#ffffff" stroke="#e5e7eb"/>
+    <text x="466" y="352" font-family="'Inter', sans-serif" font-size="8" font-weight="800" fill="#f58220">01. LOGO</text>
+    <text x="466" y="365" font-family="'Inter', sans-serif" font-size="7" font-weight="500" fill="#6b7280">Nhận diện sắc nét</text>
+    <circle cx="518" cy="375" r="8" fill="#fff7ed"/>
+    
+    <rect x="544" y="335" width="78" height="60" rx="6" fill="#ffffff" stroke="#e5e7eb"/>
+    <text x="552" y="352" font-family="'Inter', sans-serif" font-size="8" font-weight="800" fill="#1877f2">02. WEB</text>
+    <text x="552" y="365" font-family="'Inter', sans-serif" font-size="7" font-weight="500" fill="#6b7280">Chuẩn di động</text>
+    <circle cx="604" cy="375" r="8" fill="#eff6ff"/>
+    
+    <!-- Mobile floating CTA bar simulation -->
+    <rect x="458" y="405" width="164" height="28" rx="6" fill="#1f2937"/>
+    <text x="495" y="423" font-family="'Inter', sans-serif" font-size="9" font-weight="700" fill="#ffffff">💬 TRAO ĐỔI NGAY</text>
+  </g>
+
+  <!-- Floating Stats Badge -->
+  <g filter="url(#cardShadow)">
+    <rect x="30" y="390" width="200" height="75" rx="10" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.5"/>
+    <circle cx="55" cy="427" r="16" fill="#fff7ed"/>
+    <path d="M48 427L53 432L63 422" stroke="#f58220" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="80" y="420" font-family="'Inter', sans-serif" font-size="14" font-weight="800" fill="#1f2937">100+ Dự án</text>
+    <text x="80" y="438" font-family="'Inter', sans-serif" font-size="10" font-weight="600" fill="#6b7280">Thiết kế &amp; Web thực chiến</text>
+  </g>
+</svg>

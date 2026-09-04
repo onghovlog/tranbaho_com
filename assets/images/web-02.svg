@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" fill="none">
+  <rect width="600" height="400" fill="#f8f9fb"/>
+  <!-- Browser Frame -->
+  <rect x="25" y="25" width="550" height="350" rx="10" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.5"/>
+  <rect x="25" y="25" width="550" height="36" rx="10" fill="#f8f9fb"/>
+  <line x1="25" y1="61" x2="575" y2="61" stroke="#e5e7eb"/>
+  <circle cx="45" cy="43" r="4" fill="#f58220"/>
+  <circle cx="58" cy="43" r="4" fill="#1877f2"/>
+  <circle cx="71" cy="43" r="4" fill="#10b981"/>
+  <rect x="100" y="35" width="220" height="16" rx="8" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="115" y="46" font-family="'Inter', sans-serif" font-size="8.5" font-weight="600" fill="#6b7280">https://masterclass.design.vn</text>
+
+  <!-- Landing Page Hero -->
+  <g transform="translate(45, 80)">
+    <rect width="510" height="170" rx="10" fill="#1f2937"/>
+    <text x="35" y="45" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#f58220">KHOÁ HỌC THỰC CHIẾN 2026</text>
+    <text x="35" y="75" font-family="'Inter', sans-serif" font-size="18" font-weight="800" fill="#ffffff">THIẾT KẾ ĐỒ HOẠ &amp; UI/UX CHO NGƯỜI MỚI</text>
+    <text x="35" y="100" font-family="'Inter', sans-serif" font-size="11" font-weight="500" fill="#9ca3af">Học từ giảng viên FPT Polytechnic · Thực hành dự án thực tế · Có portfolio ngay</text>
+    
+    <rect x="35" y="120" width="130" height="32" rx="6" fill="#f58220"/>
+    <text x="50" y="140" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#ffffff">ĐĂNG KÝ HỌC NGAY</text>
+    <rect x="175" y="120" width="120" height="32" rx="6" fill="#374151"/>
+    <text x="195" y="140" font-family="'Inter', sans-serif" font-size="10" font-weight="600" fill="#ffffff">XEM GIÁO TRÌNH</text>
+
+    <!-- Visual right -->
+    <rect x="340" y="25" width="145" height="120" rx="8" fill="#111827" stroke="#f58220" stroke-width="1"/>
+    <circle cx="412" cy="70" r="28" fill="#fff7ed"/>
+    <text x="412" y="78" font-family="'Inter', sans-serif" font-size="22" font-weight="900" fill="#f58220" text-anchor="middle">🎨</text>
+    <text x="412" y="120" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#ffffff" text-anchor="middle">100% Thực hành</text>
+  </g>
+
+  <!-- 3 Highlights -->
+  <g transform="translate(45, 265)">
+    <rect x="0" y="0" width="160" height="85" rx="6" fill="#ffffff" stroke="#e5e7eb"/>
+    <text x="15" y="28" font-family="'Inter', sans-serif" font-size="12" font-weight="800" fill="#1f2937">01. Cầm Tay Chỉ Việc</text>
+    <text x="15" y="48" font-family="'Inter', sans-serif" font-size="9" font-weight="500" fill="#6b7280">Sửa bài chi tiết từng học viên qua Zoom &amp; LMS.</text>
+
+    <rect x="175" y="0" width="160" height="85" rx="6" fill="#ffffff" stroke="#e5e7eb"/>
+    <text x="190" y="28" font-family="'Inter', sans-serif" font-size="12" font-weight="800" fill="#1f2937">02. Tài Nguyên Chuẩn</text>
+    <text x="190" y="48" font-family="'Inter', sans-serif" font-size="9" font-weight="500" fill="#6b7280">Tặng trọn bộ 500+ template Figma, Photoshop.</text>
+
+    <rect x="350" y="0" width="160" height="85" rx="6" fill="#ffffff" stroke="#e5e7eb"/>
+    <text x="365" y="28" font-family="'Inter', sans-serif" font-size="12" font-weight="800" fill="#1f2937">03. Cơ Hội Việc Làm</text>
+    <text x="365" y="48" font-family="'Inter', sans-serif" font-size="9" font-weight="500" fill="#6b7280">Kết nối doanh nghiệp tuyển dụng ngay sau khoá.</text>
+  </g>
+</svg>

@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" fill="none">
+  <defs>
+    <linearGradient id="bgGrad4" x1="0" y1="0" x2="640" y2="360" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fff7ed"/>
+      <stop offset="1" stop-color="#f8fafc"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" rx="12" fill="url(#bgGrad4)"/>
+  <rect x="24" y="24" width="592" height="312" rx="10" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.5"/>
+  
+  <!-- Showcase of Real Commercial Works -->
+  <rect x="54" y="54" width="340" height="252" rx="8" fill="#f8f9fb" stroke="#e2e8f0"/>
+  
+  <!-- Banner 1: Event Poster -->
+  <rect x="70" y="70" width="100" height="150" rx="6" fill="#1e1b4b" stroke="#312e81"/>
+  <circle cx="120" cy="110" r="22" fill="#f58220"/>
+  <text x="120" y="150" font-family="'Inter', sans-serif" font-size="9" font-weight="800" fill="#ffffff" text-anchor="middle">TECH EXPO</text>
+  <rect x="85" y="160" width="70" height="6" rx="2" fill="#818cf8"/>
+  <rect x="90" y="172" width="60" height="6" rx="2" fill="#c7d2fe"/>
+
+  <!-- Banner 2: Social Media 1:1 Post -->
+  <rect x="184" y="70" width="100" height="100" rx="6" fill="#fff7ed" stroke="#fdba74"/>
+  <rect x="194" y="80" width="80" height="50" rx="4" fill="#f58220"/>
+  <text x="234" y="110" font-family="'Inter', sans-serif" font-size="10" font-weight="800" fill="#ffffff" text-anchor="middle">SALE 50%</text>
+  <rect x="194" y="140" width="80" height="14" rx="3" fill="#0f172a"/>
+  <text x="234" y="151" font-family="'Inter', sans-serif" font-size="7" font-weight="700" fill="#ffffff" text-anchor="middle">MUA NGAY</text>
+
+  <!-- Banner 3: Standee / Key Visual -->
+  <rect x="298" y="70" width="80" height="150" rx="6" fill="#047857" stroke="#059669"/>
+  <circle cx="338" cy="105" r="16" fill="#fef08a"/>
+  <text x="338" y="140" font-family="'Inter', sans-serif" font-size="8" font-weight="800" fill="#ffffff" text-anchor="middle">SUMMIT</text>
+  <rect x="308" y="152" width="60" height="5" rx="2" fill="#a7f3d0"/>
+
+  <rect x="70" y="235" width="308" height="55" rx="6" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="85" y="258" font-family="'Inter', sans-serif" font-size="11" font-weight="800" fill="#0f172a">DỰ ÁN DOANH NGHIỆP THỰC TẾ</text>
+  <text x="85" y="276" font-family="'Inter', sans-serif" font-size="10" font-weight="600" fill="#64748b">Banner • Poster • Backdrop • Social Feed</text>
+
+  <!-- Right Side Badges -->
+  <rect x="414" y="54" width="172" height="74" rx="8" fill="#fff7ed" stroke="#fed7aa"/>
+  <text x="430" y="86" font-family="'Inter', sans-serif" font-size="14" font-weight="800" fill="#c2410c">SỰ KIỆN &amp; ADS</text>
+  <text x="430" y="108" font-family="'Inter', sans-serif" font-size="11" font-weight="600" fill="#ea580c">Ấn phẩm truyền thông</text>
+  
+  <rect x="414" y="142" width="172" height="74" rx="8" fill="#eff6ff" stroke="#bfdbfe"/>
+  <text x="430" y="174" font-family="'Inter', sans-serif" font-size="13" font-weight="800" fill="#1e40af">SOCIAL BRAND</text>
+  <text x="430" y="196" font-family="'Inter', sans-serif" font-size="11" font-weight="600" fill="#2563eb">Xây dựng trang cá nhân</text>
+  
+  <rect x="414" y="230" width="172" height="76" rx="8" fill="#f0fdf4" stroke="#bbf7d0"/>
+  <text x="430" y="262" font-family="'Inter', sans-serif" font-size="13" font-weight="800" fill="#15803d">PORTFOLIO KHỦNG</text>
+  <text x="430" y="284" font-family="'Inter', sans-serif" font-size="11" font-weight="600" fill="#16a34a">Tự tin nhận việc ngay</text>
+</svg>

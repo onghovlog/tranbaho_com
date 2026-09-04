@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" fill="none">
+  <rect width="600" height="400" fill="#f8f9fb"/>
+  <!-- Browser Frame -->
+  <rect x="25" y="25" width="550" height="350" rx="10" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.5"/>
+  <rect x="25" y="25" width="550" height="36" rx="10" fill="#f8f9fb"/>
+  <line x1="25" y1="61" x2="575" y2="61" stroke="#e5e7eb"/>
+  <circle cx="45" cy="43" r="4" fill="#f58220"/>
+  <circle cx="58" cy="43" r="4" fill="#1877f2"/>
+  <circle cx="71" cy="43" r="4" fill="#10b981"/>
+  <rect x="100" y="35" width="220" height="16" rx="8" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="115" y="46" font-family="'Inter', sans-serif" font-size="8.5" font-weight="600" fill="#6b7280">https://alexphotography.me</text>
+
+  <!-- Creator Portfolio Content -->
+  <g transform="translate(45, 75)">
+    <rect width="510" height="40" rx="4" fill="#ffffff"/>
+    <text x="15" y="25" font-family="'Inter', sans-serif" font-size="14" font-weight="900" fill="#1f2937">ALEX NGUYEN</text>
+    <text x="280" y="25" font-family="'Inter', sans-serif" font-size="9" font-weight="600" fill="#6b7280">PORTFOLIO · ABOUT · GEAR · CONTACT</text>
+
+    <!-- Visual Portfolio Showcase -->
+    <g transform="translate(0, 50)">
+      <rect x="0" y="0" width="250" height="210" rx="8" fill="#1e293b"/>
+      <circle cx="125" cy="90" r="35" fill="#334155"/>
+      <text x="125" y="96" font-family="'Inter', sans-serif" font-size="20" fill="#ffffff" text-anchor="middle">📷</text>
+      <text x="20" y="170" font-family="'Inter', sans-serif" font-size="12" font-weight="800" fill="#ffffff">Commercial &amp; Fashion</text>
+      <text x="20" y="190" font-family="'Inter', sans-serif" font-size="9" font-weight="500" fill="#94a3b8">Hà Nội &amp; TP. Hồ Chí Minh</text>
+
+      <rect x="260" y="0" width="250" height="100" rx="8" fill="#fff7ed" stroke="#f58220"/>
+      <text x="280" y="40" font-family="'Inter', sans-serif" font-size="12" font-weight="800" fill="#f58220">Travel &amp; Documentary</text>
+      <text x="280" y="65" font-family="'Inter', sans-serif" font-size="9" font-weight="500" fill="#6b7280">35+ Quốc gia và vùng lãnh thổ</text>
+
+      <rect x="260" y="110" width="250" height="100" rx="8" fill="#eff6ff" stroke="#1877f2"/>
+      <text x="280" y="150" font-family="'Inter', sans-serif" font-size="12" font-weight="800" fill="#1877f2">Workshops &amp; Mentorship</text>
+      <text x="280" y="175" font-family="'Inter', sans-serif" font-size="9" font-weight="500" fill="#6b7280">Đào tạo nhiếp ảnh gia trẻ chuyên nghiệp</text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" width="100%" height="100%" fill="none">
+  <!-- Brand Mark -->
+  <rect x="4" y="10" width="60" height="60" rx="14" fill="#f58220" />
+  <path d="M22 28H46M34 28V52M42 38L48 52" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="46" cy="28" r="3.5" fill="#1877f2" />
+  
+  <!-- Brand Name Typography -->
+  <text x="76" y="38" font-family="'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="800" fill="#1f2937" letter-spacing="-0.5">TRẦN BÁ HỘ</text>
+  <text x="76" y="58" font-family="'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="600" fill="#f58220" letter-spacing="1.2">DESIGN · CODE · BUSINESS</text>
+</svg>
