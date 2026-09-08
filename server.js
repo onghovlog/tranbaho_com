@@ -315,7 +315,69 @@ const server = http.createServer(async (req, res) => {
     const collectionName = pathSegments[0];
     const docId = pathSegments[1];
 
-    res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
+    // POST /api/admin/upload - Upload hình ảnh từ máy tính
+    if (reqPath === '/api/admin/upload' && req.method === 'POST') {
+      try {
+        const body = await parseJsonBody(req);
+        const { fileName, fileData } = body;
+
+        if (!fileData || !fileData.includes('base64,')) {
+          res.end(JSON.stringify({ success: false, message: 'Dữ liệu file không hợp lệ.' }));
+          return;
+        }
+
+        const matches = fileData.match(/^data:([A-Za-z0-9\-+\/]+);base64,(.+)$/);
+        if (!matches || matches.length !== 3) {
+          res.end(JSON.stringify({ success: false, message: 'Định dạng base64 không đúng cấu trúc.' }));
+          return;
+        }
+
+        const mimeType = matches[1];
+        const base64Data = matches[2];
+        const buffer = Buffer.from(base64Data, 'base64');
+
+        if (buffer.length > 15 * 1024 * 1024) {
+          res.end(JSON.stringify({ success: false, message: 'Dung lượng file vượt quá giới hạn cho phép 15MB.' }));
+          return;
+        }
+
+        let ext = path.extname(fileName || '').toLowerCase();
+        if (!ext || !['.png', '.jpg', '.jpeg', '.webp', '.svg', '.gif'].includes(ext)) {
+          if (mimeType === 'image/jpeg') ext = '.jpg';
+          else if (mimeType === 'image/png') ext = '.png';
+          else if (mimeType === 'image/webp') ext = '.webp';
+          else if (mimeType === 'image/svg+xml') ext = '.svg';
+          else if (mimeType === 'image/gif') ext = '.gif';
+          else ext = '.png';
+        }
+
+        const cleanBase = path.basename(fileName || 'image', ext).replace(/[^a-zA-Z0-9_-]/g, '_').substring(0, 30);
+        const uniqueName = `upload_${Date.now()}_${cleanBase || 'img'}${ext}`;
+        const uploadDir = path.join(BASE_DIR, 'assets', 'images', 'uploads');
+
+        if (!fs.existsSync(uploadDir)) {
+          fs.mkdirSync(uploadDir, { recursive: true });
+        }
+
+        const targetFilePath = path.join(uploadDir, uniqueName);
+        fs.writeFileSync(targetFilePath, buffer);
+
+        const relativeUrl = `assets/images/uploads/${uniqueName}`;
+        console.log(`📸 Đã upload ảnh: ${relativeUrl} (${(buffer.length / 1024).toFixed(1)} KB)`);
+
+        res.end(JSON.stringify({
+          success: true,
+          url: relativeUrl,
+          fileName: uniqueName,
+          message: 'Tải ảnh lên thành công!'
+        }));
+        return;
+      } catch (err) {
+        console.error('Lỗi upload ảnh:', err);
+        res.end(JSON.stringify({ success: false, message: 'Lỗi server khi lưu file: ' + err.message }));
+        return;
+      }
+    }
 
     if (!db) {
       res.end(JSON.stringify({ success: false, message: 'Kết nối MongoDB chưa sẵn sàng.' }));

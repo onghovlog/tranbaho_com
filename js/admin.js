@@ -437,6 +437,127 @@ function closeCrudModal() {
   editingItemId = null;
 }
 
+function renderImageUploadField(fieldName, label, currentVal, collName, defaultFallback = 'assets/images/default-video-thumbnail.svg') {
+  const previewSrc = currentVal || defaultFallback;
+  return `
+    <div class="form-group">
+      <label class="form-label">${label} *</label>
+      <div class="upload-widget-card" id="upload-widget-${collName}">
+        <input type="hidden" name="${fieldName}" id="input-${collName}-image" value="${escapeHtml(currentVal || '')}" required>
+        <input type="file" id="file-input-${collName}" accept="image/png, image/jpeg, image/jpg, image/webp, image/svg+xml, image/gif" style="display: none;" onchange="handleAdminFileUpload(event, '${collName}')">
+        
+        <div class="upload-dropzone" id="dropzone-${collName}" onclick="document.getElementById('file-input-${collName}').click()">
+          <div class="upload-preview-box">
+            <img id="preview-${collName}-img" src="${previewSrc}" onerror="this.onerror=null; this.src='${defaultFallback}';" alt="Xem trước ảnh" />
+          </div>
+          <div class="upload-dropzone-content">
+            <button type="button" class="btn btn-outline-primary btn-sm btn-upload-browse" onclick="event.stopPropagation(); document.getElementById('file-input-${collName}').click()">
+              📁 Chọn ảnh từ máy tính
+            </button>
+            <p class="upload-tip">Hỗ trợ JPG, PNG, WebP, SVG, GIF (Tối đa 15MB).</p>
+            <div class="upload-status" id="upload-status-${collName}"></div>
+          </div>
+        </div>
+        
+        <div class="upload-url-accordion">
+          <button type="button" class="btn-toggle-url" onclick="toggleManualUrl('${collName}')">🔗 Hoặc nhập đường dẫn ảnh (URL) thủ công</button>
+          <div class="manual-url-box" id="manual-url-box-${collName}" style="display: none;">
+            <input type="text" id="manual-url-input-${collName}" class="form-control" value="${escapeHtml(currentVal || '')}" placeholder="VD: assets/images/... hoặc https://..." oninput="handleManualUrlChange('${collName}', this.value)">
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+async function handleAdminFileUpload(event, collName) {
+  const fileInput = event.target;
+  const file = fileInput.files && fileInput.files[0];
+  if (!file) return;
+
+  const statusEl = document.getElementById(`upload-status-${collName}`);
+  const previewImg = document.getElementById(`preview-${collName}-img`);
+  const hiddenInput = document.getElementById(`input-${collName}-image`);
+  const manualInput = document.getElementById(`manual-url-input-${collName}`);
+
+  // Validation
+  if (!file.type.startsWith('image/')) {
+    if (statusEl) statusEl.innerHTML = '<span style="color: #dc2626; font-weight: 600;">❌ Vui lòng chọn đúng file hình ảnh!</span>';
+    return;
+  }
+
+  if (file.size > 15 * 1024 * 1024) {
+    if (statusEl) statusEl.innerHTML = '<span style="color: #dc2626; font-weight: 600;">❌ Dung lượng file quá lớn (tối đa 15MB)!</span>';
+    return;
+  }
+
+  const reader = new FileReader();
+  reader.onload = async (e) => {
+    const base64Data = e.target.result;
+    if (previewImg) previewImg.src = base64Data;
+
+    if (statusEl) {
+      statusEl.innerHTML = '<span style="color: #0284c7; font-weight: 600;">⏳ Đang tải ảnh lên server...</span>';
+    }
+
+    try {
+      const res = await fetch('/api/admin/upload', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${currentToken}`
+        },
+        body: JSON.stringify({
+          fileName: file.name,
+          fileData: base64Data
+        })
+      });
+      const data = await res.json();
+
+      if (data.success && data.url) {
+        if (hiddenInput) hiddenInput.value = data.url;
+        if (manualInput) manualInput.value = data.url;
+        if (previewImg) previewImg.src = data.url;
+        if (statusEl) {
+          statusEl.innerHTML = `<span style="color: #16a34a; font-weight: 600;">✅ Đã tải lên: <strong>${escapeHtml(file.name)}</strong></span>`;
+        }
+      } else {
+        if (statusEl) {
+          statusEl.innerHTML = `<span style="color: #dc2626; font-weight: 600;">❌ Lỗi: ${data.message || 'Không thể tải lên'}</span>`;
+        }
+      }
+    } catch (err) {
+      if (statusEl) {
+        statusEl.innerHTML = `<span style="color: #dc2626; font-weight: 600;">❌ Lỗi kết nối: ${err.message}</span>`;
+      }
+    }
+  };
+  reader.readAsDataURL(file);
+}
+
+function toggleManualUrl(collName) {
+  const box = document.getElementById(`manual-url-box-${collName}`);
+  if (!box) return;
+  const isHidden = box.style.display === 'none' || !box.style.display;
+  box.style.display = isHidden ? 'block' : 'none';
+}
+
+function handleManualUrlChange(collName, val) {
+  const hiddenInput = document.getElementById(`input-${collName}-image`);
+  const previewImg = document.getElementById(`preview-${collName}-img`);
+  const statusEl = document.getElementById(`upload-status-${collName}`);
+
+  if (hiddenInput) hiddenInput.value = val.trim();
+  if (previewImg) {
+    if (val && val.trim()) {
+      previewImg.src = val.trim();
+    } else {
+      previewImg.src = 'assets/images/default-video-thumbnail.svg';
+    }
+  }
+  if (statusEl) statusEl.innerHTML = '';
+}
+
 function buildFormFields(coll, data) {
   if (coll === 'courses') {
     return `
@@ -454,10 +575,7 @@ function buildFormFields(coll, data) {
           <input type="text" name="format" class="form-control" value="${escapeHtml(data.format || 'Google Meet')}">
         </div>
       </div>
-      <div class="form-group">
-        <label class="form-label">Đường dẫn Hình ảnh (URL)</label>
-        <input type="text" name="image" class="form-control" value="${escapeHtml(data.image || 'assets/images/courses/khoahoc_design.png')}">
-      </div>
+      ${renderImageUploadField('image', 'Upload ảnh khóa học', data.image || 'assets/images/courses/khoahoc_design.png', 'courses')}
       <div class="form-group">
         <label class="form-label">Mô tả ngắn</label>
         <textarea name="description" class="form-control" rows="3">${escapeHtml(data.description || '')}</textarea>
@@ -487,10 +605,7 @@ function buildFormFields(coll, data) {
         <label class="form-label">Khách hàng / Đơn vị</label>
         <input type="text" name="client" class="form-control" value="${escapeHtml(data.client || '')}">
       </div>
-      <div class="form-group">
-        <label class="form-label">Đường dẫn Ảnh (URL)</label>
-        <input type="text" name="image" class="form-control" value="${escapeHtml(data.image || 'assets/images/design-01.svg')}">
-      </div>
+      ${renderImageUploadField('image', 'Upload ảnh tác phẩm (Browse từ máy tính)', data.image || 'assets/images/design-01.svg', 'designPortfolio')}
       <div class="form-group">
         <label class="form-label">Mô tả chi tiết</label>
         <textarea name="description" class="form-control" rows="3">${escapeHtml(data.description || '')}</textarea>
@@ -512,10 +627,7 @@ function buildFormFields(coll, data) {
           <input type="text" name="tech" class="form-control" value="${escapeHtml(data.tech || 'HTML5 · CSS3 · JS')}">
         </div>
       </div>
-      <div class="form-group">
-        <label class="form-label">Đường dẫn Ảnh (URL)</label>
-        <input type="text" name="image" class="form-control" value="${escapeHtml(data.image || 'assets/images/web-01.svg')}">
-      </div>
+      ${renderImageUploadField('image', 'Upload ảnh dự án Web', data.image || 'assets/images/web-01.svg', 'webProjects')}
       <div class="form-group">
         <label class="form-label">Mô tả dự án</label>
         <textarea name="description" class="form-control" rows="3">${escapeHtml(data.description || '')}</textarea>
@@ -537,10 +649,7 @@ function buildFormFields(coll, data) {
           <input type="text" name="date" class="form-control" value="${data.date || new Date().toLocaleDateString('vi-VN')}">
         </div>
       </div>
-      <div class="form-group">
-        <label class="form-label">Đường dẫn Ảnh đại diện (URL)</label>
-        <input type="text" name="image" class="form-control" value="${escapeHtml(data.image || 'assets/images/article-01.svg')}">
-      </div>
+      ${renderImageUploadField('image', 'Upload ảnh đại diện bài viết', data.image || 'assets/images/article-01.svg', 'articles')}
       <div class="form-group">
         <label class="form-label">Mô tả tóm tắt</label>
         <textarea name="description" class="form-control" rows="2">${escapeHtml(data.description || '')}</textarea>
@@ -551,7 +660,6 @@ function buildFormFields(coll, data) {
       </div>
     `;
   } else if (coll === 'gallery') {
-    const currentImg = data.image || 'assets/images/gallery-01.svg';
     return `
       <div class="form-group">
         <label class="form-label">Tiêu đề ảnh / Hoạt động *</label>
@@ -567,19 +675,7 @@ function buildFormFields(coll, data) {
           <input type="text" name="date" class="form-control" value="${escapeHtml(data.date || new Date().toLocaleDateString('vi-VN'))}">
         </div>
       </div>
-      <div class="form-group">
-        <label class="form-label">Đường dẫn Hình ảnh (URL / Path) *</label>
-        <input type="text" name="image" id="input-gallery-image" class="form-control" value="${escapeHtml(data.image || '')}" placeholder="assets/images/... hoặc link https://..." required oninput="updateGalleryImgPreview(this.value)">
-      </div>
-      <div class="form-group">
-        <label class="form-label">Xem trước hình ảnh</label>
-        <div style="display: flex; gap: 16px; align-items: center; background: #f8fafc; padding: 12px; border-radius: 8px; border: 1px solid #e2e8f0;">
-          <img id="gallery-img-preview" src="${currentImg}" style="width: 140px; height: 95px; object-fit: cover; border-radius: 6px; background: #0f172a;" onerror="this.onerror=null; this.src='assets/images/default-video-thumbnail.svg';" />
-          <div style="font-size: 0.8125rem; color: #64748b; line-height: 1.5;">
-            Hỗ trợ link ảnh tĩnh trong thư mục dự án (<code>assets/images/...</code>) hoặc link ảnh trực tuyến (<code>https://...</code>).
-          </div>
-        </div>
-      </div>
+      ${renderImageUploadField('image', 'Upload ảnh hoạt động', data.image || 'assets/images/gallery-01.svg', 'gallery')}
       <div class="form-group">
         <label class="form-label">Chú thích / Mô tả ảnh</label>
         <textarea name="caption" class="form-control" rows="3" placeholder="Mô tả chi tiết hoặc thông điệp của bức ảnh...">${escapeHtml(data.caption || '')}</textarea>
