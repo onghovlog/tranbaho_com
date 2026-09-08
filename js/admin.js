@@ -438,24 +438,39 @@ function closeCrudModal() {
 }
 
 function renderImageUploadField(fieldName, label, currentVal, collName, defaultFallback = 'assets/images/default-video-thumbnail.svg') {
-  const previewSrc = currentVal || defaultFallback;
+  const hasImage = Boolean(currentVal && currentVal.trim());
+  const previewSrc = hasImage ? currentVal : '';
+
   return `
     <div class="form-group">
-      <label class="form-label">${label} *</label>
+      <label class="form-label">${label} <span style="color: #ef4444;">*</span></label>
       <div class="upload-widget-card" id="upload-widget-${collName}">
         <input type="hidden" name="${fieldName}" id="input-${collName}-image" value="${escapeHtml(currentVal || '')}" required>
         <input type="file" id="file-input-${collName}" accept="image/png, image/jpeg, image/jpg, image/webp, image/svg+xml, image/gif" style="display: none;" onchange="handleAdminFileUpload(event, '${collName}')">
         
-        <div class="upload-dropzone" id="dropzone-${collName}" onclick="document.getElementById('file-input-${collName}').click()">
-          <div class="upload-preview-box">
+        <div class="upload-dropzone ${hasImage ? 'has-preview' : 'empty-state'}" id="dropzone-${collName}" 
+             onclick="document.getElementById('file-input-${collName}').click()"
+             ondragover="handleDropzoneDragOver(event, '${collName}')"
+             ondragleave="handleDropzoneDragLeave(event, '${collName}')"
+             ondrop="handleDropzoneDrop(event, '${collName}')">
+          
+          <div class="upload-preview-box" id="preview-box-${collName}" style="${hasImage ? '' : 'display: none;'}">
             <img id="preview-${collName}-img" src="${previewSrc}" onerror="this.onerror=null; this.src='${defaultFallback}';" alt="Xem trước ảnh" />
           </div>
-          <div class="upload-dropzone-content">
+
+          <div class="upload-empty-placeholder" id="placeholder-${collName}" style="${hasImage ? 'display: none;' : ''}">
+            <div class="upload-icon-large">📤</div>
+            <div class="upload-main-text">Nhấp vào đây hoặc kéo thả ảnh từ máy tính</div>
+            <div class="upload-sub-text">Bắt buộc tải ảnh từ máy tính cá nhân (PNG, JPG, SVG, WebP tối đa 15MB)</div>
+          </div>
+          
+          <div class="upload-dropzone-content" style="${hasImage ? '' : 'display: none;'}" id="content-has-img-${collName}">
             <button type="button" class="btn btn-outline-primary btn-sm btn-upload-browse" onclick="event.stopPropagation(); document.getElementById('file-input-${collName}').click()">
-              📁 Chọn ảnh từ máy tính
+              🔄 Chọn ảnh khác từ máy tính
             </button>
-            <p class="upload-tip">Hỗ trợ JPG, PNG, WebP, SVG, GIF (Tối đa 15MB).</p>
-            <div class="upload-status" id="upload-status-${collName}"></div>
+            <div class="upload-status" id="upload-status-${collName}">
+              <span style="color: #16a34a; font-weight: 600;">✅ File hiện tại: ${escapeHtml(currentVal ? currentVal.split('/').pop() : '')}</span>
+            </div>
           </div>
         </div>
         
@@ -470,25 +485,67 @@ function renderImageUploadField(fieldName, label, currentVal, collName, defaultF
   `;
 }
 
+function handleDropzoneDragOver(e, collName) {
+  e.preventDefault();
+  e.stopPropagation();
+  const dropzone = document.getElementById(`dropzone-${collName}`);
+  if (dropzone) dropzone.classList.add('dragover');
+}
+
+function handleDropzoneDragLeave(e, collName) {
+  e.preventDefault();
+  e.stopPropagation();
+  const dropzone = document.getElementById(`dropzone-${collName}`);
+  if (dropzone) dropzone.classList.remove('dragover');
+}
+
+function handleDropzoneDrop(e, collName) {
+  e.preventDefault();
+  e.stopPropagation();
+  const dropzone = document.getElementById(`dropzone-${collName}`);
+  if (dropzone) dropzone.classList.remove('dragover');
+
+  const files = e.dataTransfer && e.dataTransfer.files;
+  if (files && files.length > 0) {
+    processImageFileUpload(files[0], collName);
+  }
+}
+
 async function handleAdminFileUpload(event, collName) {
   const fileInput = event.target;
   const file = fileInput.files && fileInput.files[0];
   if (!file) return;
+  processImageFileUpload(file, collName);
+}
 
+async function processImageFileUpload(file, collName) {
   const statusEl = document.getElementById(`upload-status-${collName}`);
   const previewImg = document.getElementById(`preview-${collName}-img`);
+  const previewBox = document.getElementById(`preview-box-${collName}`);
+  const placeholder = document.getElementById(`placeholder-${collName}`);
+  const contentHasImg = document.getElementById(`content-has-img-${collName}`);
+  const dropzone = document.getElementById(`dropzone-${collName}`);
   const hiddenInput = document.getElementById(`input-${collName}-image`);
   const manualInput = document.getElementById(`manual-url-input-${collName}`);
 
   // Validation
   if (!file.type.startsWith('image/')) {
-    if (statusEl) statusEl.innerHTML = '<span style="color: #dc2626; font-weight: 600;">❌ Vui lòng chọn đúng file hình ảnh!</span>';
+    alert('❌ Vui lòng chọn đúng file hình ảnh (PNG, JPG, SVG, WebP, GIF)!');
     return;
   }
 
   if (file.size > 15 * 1024 * 1024) {
-    if (statusEl) statusEl.innerHTML = '<span style="color: #dc2626; font-weight: 600;">❌ Dung lượng file quá lớn (tối đa 15MB)!</span>';
+    alert('❌ Dung lượng file quá lớn (tối đa 15MB)!');
     return;
+  }
+
+  // Visual state updates
+  if (previewBox) previewBox.style.display = 'flex';
+  if (placeholder) placeholder.style.display = 'none';
+  if (contentHasImg) contentHasImg.style.display = 'block';
+  if (dropzone) {
+    dropzone.classList.remove('empty-state');
+    dropzone.classList.add('has-preview');
   }
 
   const reader = new FileReader();
@@ -545,14 +602,31 @@ function toggleManualUrl(collName) {
 function handleManualUrlChange(collName, val) {
   const hiddenInput = document.getElementById(`input-${collName}-image`);
   const previewImg = document.getElementById(`preview-${collName}-img`);
+  const previewBox = document.getElementById(`preview-box-${collName}`);
+  const placeholder = document.getElementById(`placeholder-${collName}`);
+  const contentHasImg = document.getElementById(`content-has-img-${collName}`);
+  const dropzone = document.getElementById(`dropzone-${collName}`);
   const statusEl = document.getElementById(`upload-status-${collName}`);
 
-  if (hiddenInput) hiddenInput.value = val.trim();
-  if (previewImg) {
-    if (val && val.trim()) {
-      previewImg.src = val.trim();
-    } else {
-      previewImg.src = 'assets/images/default-video-thumbnail.svg';
+  const cleanVal = (val || '').trim();
+  if (hiddenInput) hiddenInput.value = cleanVal;
+
+  if (cleanVal) {
+    if (previewImg) previewImg.src = cleanVal;
+    if (previewBox) previewBox.style.display = 'flex';
+    if (placeholder) placeholder.style.display = 'none';
+    if (contentHasImg) contentHasImg.style.display = 'block';
+    if (dropzone) {
+      dropzone.classList.remove('empty-state');
+      dropzone.classList.add('has-preview');
+    }
+  } else {
+    if (previewBox) previewBox.style.display = 'none';
+    if (placeholder) placeholder.style.display = 'block';
+    if (contentHasImg) contentHasImg.style.display = 'none';
+    if (dropzone) {
+      dropzone.classList.add('empty-state');
+      dropzone.classList.remove('has-preview');
     }
   }
   if (statusEl) statusEl.innerHTML = '';
@@ -575,7 +649,7 @@ function buildFormFields(coll, data) {
           <input type="text" name="format" class="form-control" value="${escapeHtml(data.format || 'Google Meet')}">
         </div>
       </div>
-      ${renderImageUploadField('image', 'Upload ảnh khóa học', data.image || 'assets/images/courses/khoahoc_design.png', 'courses')}
+      ${renderImageUploadField('image', 'Upload ảnh khóa học từ máy tính', data.image || '', 'courses')}
       <div class="form-group">
         <label class="form-label">Mô tả ngắn</label>
         <textarea name="description" class="form-control" rows="3">${escapeHtml(data.description || '')}</textarea>
@@ -605,7 +679,7 @@ function buildFormFields(coll, data) {
         <label class="form-label">Khách hàng / Đơn vị</label>
         <input type="text" name="client" class="form-control" value="${escapeHtml(data.client || '')}">
       </div>
-      ${renderImageUploadField('image', 'Upload ảnh tác phẩm (Browse từ máy tính)', data.image || 'assets/images/design-01.svg', 'designPortfolio')}
+      ${renderImageUploadField('image', 'Upload ảnh tác phẩm Portfolio từ máy tính', data.image || '', 'designPortfolio')}
       <div class="form-group">
         <label class="form-label">Mô tả chi tiết</label>
         <textarea name="description" class="form-control" rows="3">${escapeHtml(data.description || '')}</textarea>
@@ -627,7 +701,7 @@ function buildFormFields(coll, data) {
           <input type="text" name="tech" class="form-control" value="${escapeHtml(data.tech || 'HTML5 · CSS3 · JS')}">
         </div>
       </div>
-      ${renderImageUploadField('image', 'Upload ảnh dự án Web', data.image || 'assets/images/web-01.svg', 'webProjects')}
+      ${renderImageUploadField('image', 'Upload ảnh dự án Web từ máy tính', data.image || '', 'webProjects')}
       <div class="form-group">
         <label class="form-label">Mô tả dự án</label>
         <textarea name="description" class="form-control" rows="3">${escapeHtml(data.description || '')}</textarea>
@@ -649,7 +723,7 @@ function buildFormFields(coll, data) {
           <input type="text" name="date" class="form-control" value="${data.date || new Date().toLocaleDateString('vi-VN')}">
         </div>
       </div>
-      ${renderImageUploadField('image', 'Upload ảnh đại diện bài viết', data.image || 'assets/images/article-01.svg', 'articles')}
+      ${renderImageUploadField('image', 'Upload ảnh bài viết từ máy tính', data.image || '', 'articles')}
       <div class="form-group">
         <label class="form-label">Mô tả tóm tắt</label>
         <textarea name="description" class="form-control" rows="2">${escapeHtml(data.description || '')}</textarea>
@@ -675,7 +749,7 @@ function buildFormFields(coll, data) {
           <input type="text" name="date" class="form-control" value="${escapeHtml(data.date || new Date().toLocaleDateString('vi-VN'))}">
         </div>
       </div>
-      ${renderImageUploadField('image', 'Upload ảnh hoạt động', data.image || 'assets/images/gallery-01.svg', 'gallery')}
+      ${renderImageUploadField('image', 'Upload ảnh hoạt động Thư viện từ máy tính', data.image || '', 'gallery')}
       <div class="form-group">
         <label class="form-label">Chú thích / Mô tả ảnh</label>
         <textarea name="caption" class="form-control" rows="3" placeholder="Mô tả chi tiết hoặc thông điệp của bức ảnh...">${escapeHtml(data.caption || '')}</textarea>
@@ -807,6 +881,15 @@ if (crudForm) {
     if (payload.skillsStr) {
       payload.skills = payload.skillsStr.split(',').map(s => s.trim()).filter(Boolean);
       delete payload.skillsStr;
+    }
+
+    // Require image for image collections
+    const imageCollections = ['designPortfolio', 'gallery', 'courses', 'webProjects', 'articles'];
+    if (imageCollections.includes(currentModalCollection)) {
+      if (!payload.image || !payload.image.trim()) {
+        alert('⚠️ Vui lòng tải lên hình ảnh từ máy tính cá nhân trước khi lưu!');
+        return;
+      }
     }
 
     if (currentModalCollection === 'youtubeVideos') {
