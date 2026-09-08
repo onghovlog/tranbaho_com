@@ -1,10 +1,91 @@
 require('dotenv').config();
 const http = require('http');
+const https = require('https');
 const fs = require('fs');
 const path = require('path');
 const { MongoClient, ObjectId } = require('mongodb');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
+
+function formatSeconds(sec) {
+  const total = parseInt(sec, 10);
+  if (isNaN(total) || total < 0) return '';
+  const hours = Math.floor(total / 3600);
+  const minutes = Math.floor((total % 3600) / 60);
+  const seconds = total % 60;
+  if (hours > 0) {
+    return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+  }
+  return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+}
+
+function parseIsoDuration(iso) {
+  if (!iso) return '';
+  const match = iso.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
+  if (!match) return '';
+  const hours = parseInt(match[1] || 0, 10);
+  const minutes = parseInt(match[2] || 0, 10);
+  const seconds = parseInt(match[3] || 0, 10);
+  const totalSec = hours * 3600 + minutes * 60 + seconds;
+  return formatSeconds(totalSec);
+}
+
+function fetchYoutubeInfo(videoId) {
+  return new Promise((resolve) => {
+    if (!videoId) return resolve({ success: false, message: 'Missing videoId' });
+    const url = `https://www.youtube.com/watch?v=${videoId}`;
+    const req = https.get(url, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'Accept-Language': 'vi-VN,vi;q=0.9,en-US;q=0.8,en;q=0.7'
+      }
+    }, (res) => {
+      let html = '';
+      res.on('data', chunk => { html += chunk; });
+      res.on('end', () => {
+        let duration = '';
+        let title = '';
+
+        // Extract title
+        const titleMatch = html.match(/<meta property="og:title" content="(.*?)">/) || html.match(/<title>(.*?) - YouTube<\/title>/);
+        if (titleMatch && titleMatch[1]) {
+          title = titleMatch[1].replace(/&quot;/g, '"').replace(/&amp;/g, '&');
+        }
+
+        // Extract duration
+        const lenMatch = html.match(/"lengthSeconds":"(\d+)"/);
+        if (lenMatch && lenMatch[1]) {
+          duration = formatSeconds(lenMatch[1]);
+        } else {
+          const durMatch = html.match(/itemprop="duration" content="(PT[^"]+)"/);
+          if (durMatch && durMatch[1]) {
+            duration = parseIsoDuration(durMatch[1]);
+          } else {
+            const msMatch = html.match(/"approxDurationMs":"(\d+)"/);
+            if (msMatch && msMatch[1]) {
+              duration = formatSeconds(Math.round(parseInt(msMatch[1], 10) / 1000));
+            }
+          }
+        }
+        resolve({
+          success: true,
+          videoId,
+          duration,
+          title,
+          thumbnail: `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`
+        });
+      });
+    });
+
+    req.on('error', (err) => {
+      resolve({ success: false, videoId, duration: '', title: '', error: err.message });
+    });
+    req.setTimeout(5000, () => {
+      req.destroy();
+      resolve({ success: false, videoId, duration: '', title: '', error: 'Timeout' });
+    });
+  });
+}
 
 const PORT = process.env.PORT || 3000;
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/tran_ba_ho';
@@ -126,6 +207,28 @@ const server = http.createServer(async (req, res) => {
   }
 
   // --- 1. PUBLIC APIs ---
+  if (req.method === 'GET' && (reqPath === '/api/youtube-info' || reqPath === '/api/admin/youtube-info')) {
+    const decodedUrl = decodeURIComponent(req.url);
+    const urlMatch = decodedUrl.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=|shorts\/))([a-zA-Z0-9_-]{11})/i);
+    let cleanId = urlMatch ? urlMatch[1] : '';
+
+    if (!cleanId) {
+      const paramMatch = decodedUrl.match(/[?&]v=([a-zA-Z0-9_-]{11})(?:&|$)/i);
+      if (paramMatch && paramMatch[1]) cleanId = paramMatch[1];
+    }
+
+    if (!cleanId) {
+      const plain = decodedUrl.replace(/^.*[?&]v=/, '').replace(/^.*[?&]videoId=/, '').trim();
+      const plainMatch = plain.match(/^[a-zA-Z0-9_-]{11}$/);
+      if (plainMatch) cleanId = plainMatch[0];
+    }
+
+    const result = await fetchYoutubeInfo(cleanId);
+    res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
+    res.end(JSON.stringify(result));
+    return;
+  }
+
   if (req.method === 'GET' && reqPath === '/api/db') {
     res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
     let data = await getFullDataFromMongo();

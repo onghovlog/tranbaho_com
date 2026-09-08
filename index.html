@@ -629,12 +629,12 @@
 
         <!-- Library Switcher Tabs -->
         <div class="library-tabs" role="tablist" aria-label="Chuyển đổi thư viện">
-          <button type="button" class="library-tab-btn active" data-tab="photos">📷 Hình ảnh</button>
-          <button type="button" class="library-tab-btn" data-tab="videos">🎥 Video YouTube</button>
+          <button type="button" class="library-tab-btn" data-tab="photos">📷 Hình ảnh</button>
+          <button type="button" class="library-tab-btn active" data-tab="videos">🎥 Video YouTube</button>
         </div>
 
-        <!-- Photos Slider Carousel (8 boxes per slide) -->
-        <div class="gallery-slider-wrapper" id="photos-slider-wrapper">
+        <!-- Photos Slider Carousel (8 boxes per slide, Hidden by default) -->
+        <div class="gallery-slider-wrapper" id="photos-slider-wrapper" style="display: none;">
           <div class="gallery-carousel-track" id="photos-carousel-track">
             <!-- Dynamically rendered slides via JavaScript (8 boxes per slide) -->
           </div>
@@ -655,8 +655,8 @@
           </div>
         </div>
 
-        <!-- Videos Slider Carousel (6 boxes per slide, Hidden by default) -->
-        <div class="gallery-slider-wrapper" id="videos-slider-wrapper" style="display: none;">
+        <!-- Videos Slider Carousel (6 boxes per slide, Active by default) -->
+        <div class="gallery-slider-wrapper" id="videos-slider-wrapper">
           <div class="gallery-carousel-track" id="videos-carousel-track">
             <!-- Dynamically rendered slides via JavaScript (6 boxes per slide) -->
           </div>

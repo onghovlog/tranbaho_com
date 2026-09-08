@@ -148,6 +148,8 @@ async function loadOverviewStats() {
       document.getElementById('stat-courses-count').innerText = (dbData.courses || []).length;
       document.getElementById('stat-design-count').innerText = (dbData.designPortfolio || []).length;
       document.getElementById('stat-articles-count').innerText = (dbData.articles || []).length;
+      const galleryCountEl = document.getElementById('stat-gallery-count');
+      if (galleryCountEl) galleryCountEl.innerText = (dbData.gallery || []).length;
     }
 
     // Load contacts count
@@ -290,22 +292,57 @@ function renderTableRows(collName, items, tbody) {
         </td>
       </tr>
     `).join('');
-  } else if (collName === 'youtubeVideos') {
-    tbody.innerHTML = items.map(item => `
+  } else if (collName === 'gallery') {
+    const sorted = [...items].sort((a, b) => {
+      const timeA = parseDateToTimestamp(a.date, a.createdAt, a.id);
+      const timeB = parseDateToTimestamp(b.date, b.createdAt, b.id);
+      return timeB - timeA;
+    });
+
+    tbody.innerHTML = sorted.map(item => `
       <tr>
-        <td><img src="${item.thumbnail || ''}" class="tbl-thumb"></td>
+        <td><img src="${item.image || 'assets/images/gallery-01.svg'}" class="tbl-thumb" onerror="this.onerror=null; this.src='assets/images/default-video-thumbnail.svg';"></td>
         <td><strong>${escapeHtml(item.title)}</strong></td>
-        <td><code>${escapeHtml(item.videoId || '')}</code></td>
-        <td>${item.duration || ''}</td>
-        <td><span class="badge-count">${escapeHtml(item.category || '')}</span></td>
+        <td><span class="badge-count">${escapeHtml(item.category || 'Hoạt động')}</span></td>
+        <td><small>${escapeHtml(item.date || '')}</small></td>
+        <td><small>${escapeHtml(item.caption || '')}</small></td>
         <td>
           <div class="btn-action-group">
-            <button class="btn btn-outline-primary btn-icon" onclick="openCrudModal('${collName}', 'edit', '${item.id}')">✏️ Sửa</button>
-            <button class="btn btn-danger btn-icon" onclick="deleteItem('${collName}', '${item.id}')">🗑️ Xóa</button>
+            <button class="btn btn-outline-primary btn-icon" onclick="openCrudModal('${collName}', 'edit', '${item.id || item._id}')">✏️ Sửa</button>
+            <button class="btn btn-danger btn-icon" onclick="deleteItem('${collName}', '${item.id || item._id}')">🗑️ Xóa</button>
           </div>
         </td>
       </tr>
     `).join('');
+  } else if (collName === 'youtubeVideos') {
+    const sorted = [...items].sort((a, b) => {
+      const timeA = parseDateToTimestamp(a.date, a.createdAt, a.id);
+      const timeB = parseDateToTimestamp(b.date, b.createdAt, b.id);
+      return timeB - timeA;
+    });
+
+    tbody.innerHTML = sorted.map(item => {
+      const cleanId = extractYouTubeId(item.videoId || '');
+      const thumb = (cleanId && /^[a-zA-Z0-9_-]{11}$/.test(cleanId))
+        ? `https://i.ytimg.com/vi/${cleanId}/hqdefault.jpg`
+        : (item.thumbnail && !item.thumbnail.includes('video-0') && !item.thumbnail.endsWith('.svg') ? item.thumbnail : 'assets/images/default-video-thumbnail.svg');
+      return `
+      <tr>
+        <td><img src="${thumb}" class="tbl-thumb" onerror="this.onerror=null; this.src='assets/images/default-video-thumbnail.svg';"></td>
+        <td><strong>${escapeHtml(item.title)}</strong></td>
+        <td><code>${escapeHtml(item.videoId || '')}</code></td>
+        <td>${item.duration || ''}</td>
+        <td><span class="badge-count">${escapeHtml(item.category || '')}</span></td>
+        <td>${item.date || ''}</td>
+        <td>
+          <div class="btn-action-group">
+            <button class="btn btn-outline-primary btn-icon" onclick="openCrudModal('${collName}', 'edit', '${item.id || item._id}')">✏️ Sửa</button>
+            <button class="btn btn-danger btn-icon" onclick="deleteItem('${collName}', '${item.id || item._id}')">🗑️ Xóa</button>
+          </div>
+        </td>
+      </tr>
+      `;
+    }).join('');
   }
 }
 
@@ -513,25 +550,85 @@ function buildFormFields(coll, data) {
         <textarea name="content" class="form-control" rows="5">${escapeHtml(data.content || '')}</textarea>
       </div>
     `;
-  } else if (coll === 'youtubeVideos') {
+  } else if (coll === 'gallery') {
+    const currentImg = data.image || 'assets/images/gallery-01.svg';
     return `
       <div class="form-group">
-        <label class="form-label">Tiêu đề Video *</label>
-        <input type="text" name="title" class="form-control" value="${escapeHtml(data.title || '')}" required>
+        <label class="form-label">Tiêu đề ảnh / Hoạt động *</label>
+        <input type="text" name="title" class="form-control" value="${escapeHtml(data.title || '')}" placeholder="VD: Giờ giảng dạy Thiết kế Đồ họa..." required>
       </div>
       <div class="grid-2">
         <div class="form-group">
-          <label class="form-label">YouTube Video ID *</label>
-          <input type="text" name="videoId" class="form-control" value="${escapeHtml(data.videoId || 'dQw4w9WgXcQ')}" required>
+          <label class="form-label">Chuyên mục</label>
+          <input type="text" name="category" class="form-control" value="${escapeHtml(data.category || 'Giảng dạy')}" placeholder="VD: Giảng dạy, Workshop, Sự kiện, Dự án...">
         </div>
         <div class="form-group">
-          <label class="form-label">Thời lượng (VD: 24:15)</label>
-          <input type="text" name="duration" class="form-control" value="${escapeHtml(data.duration || '15:00')}">
+          <label class="form-label">Ngày đăng (DD/MM/YYYY)</label>
+          <input type="text" name="date" class="form-control" value="${escapeHtml(data.date || new Date().toLocaleDateString('vi-VN'))}">
         </div>
       </div>
       <div class="form-group">
-        <label class="form-label">Danh mục Video</label>
-        <input type="text" name="category" class="form-control" value="${escapeHtml(data.category || 'UI/UX Design')}">
+        <label class="form-label">Đường dẫn Hình ảnh (URL / Path) *</label>
+        <input type="text" name="image" id="input-gallery-image" class="form-control" value="${escapeHtml(data.image || '')}" placeholder="assets/images/... hoặc link https://..." required oninput="updateGalleryImgPreview(this.value)">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Xem trước hình ảnh</label>
+        <div style="display: flex; gap: 16px; align-items: center; background: #f8fafc; padding: 12px; border-radius: 8px; border: 1px solid #e2e8f0;">
+          <img id="gallery-img-preview" src="${currentImg}" style="width: 140px; height: 95px; object-fit: cover; border-radius: 6px; background: #0f172a;" onerror="this.onerror=null; this.src='assets/images/default-video-thumbnail.svg';" />
+          <div style="font-size: 0.8125rem; color: #64748b; line-height: 1.5;">
+            Hỗ trợ link ảnh tĩnh trong thư mục dự án (<code>assets/images/...</code>) hoặc link ảnh trực tuyến (<code>https://...</code>).
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Chú thích / Mô tả ảnh</label>
+        <textarea name="caption" class="form-control" rows="3" placeholder="Mô tả chi tiết hoặc thông điệp của bức ảnh...">${escapeHtml(data.caption || '')}</textarea>
+      </div>
+    `;
+  } else if (coll === 'youtubeVideos') {
+    const currentVideoId = data.videoId || '';
+    const cleanId = extractYouTubeId(currentVideoId);
+    const previewThumb = (cleanId && /^[a-zA-Z0-9_-]{11}$/.test(cleanId))
+      ? `https://i.ytimg.com/vi/${cleanId}/hqdefault.jpg`
+      : 'assets/images/default-video-thumbnail.svg';
+
+    return `
+      <div class="form-group">
+        <label class="form-label">Tiêu đề Video *</label>
+        <input type="text" name="title" id="input-yt-title" class="form-control" value="${escapeHtml(data.title || '')}" required>
+      </div>
+      <div class="grid-2">
+        <div class="form-group">
+          <label class="form-label">YouTube Video ID hoặc URL *</label>
+          <input type="text" name="videoId" id="input-yt-videoid" class="form-control" value="${escapeHtml(data.videoId || '')}" placeholder="VD: 86Oajh8whQU hoặc https://youtu.be/..." required oninput="updateYtThumbPreview(this.value)">
+          <div id="yt-fetch-status" style="font-size: 0.8125rem; margin-top: 6px; min-height: 18px;"></div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Thời lượng (Tự động tải)</label>
+          <div style="position: relative;">
+            <input type="text" name="duration" id="input-yt-duration" class="form-control" value="${escapeHtml(data.duration || '')}" placeholder="VD: 06:26">
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Xem trước Ảnh Thumbnail YouTube</label>
+        <div style="display: flex; gap: 16px; align-items: center; background: #f8fafc; padding: 12px; border-radius: 8px; border: 1px solid #e2e8f0;">
+          <img id="yt-thumb-preview" src="${previewThumb}" style="width: 150px; aspect-ratio: 16/9; object-fit: cover; border-radius: 6px; background: #0f172a;" onerror="this.onerror=null; this.src='assets/images/default-video-thumbnail.svg';" />
+          <div style="font-size: 0.8125rem; color: #64748b; line-height: 1.5;">
+            Tự động tải thumbnail gốc từ YouTube (<code>hqdefault.jpg</code>) và tự động nhận diện thời lượng video.<br>
+            Nếu không tải được hoặc video chưa tồn tại, hệ thống sẽ tự động hiển thị ảnh thumbnail mặc định.
+          </div>
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="form-group">
+          <label class="form-label">Danh mục Video</label>
+          <input type="text" name="category" class="form-control" value="${escapeHtml(data.category || 'UI/UX Design')}">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Ngày đăng (DD/MM/YYYY)</label>
+          <input type="text" name="date" class="form-control" value="${escapeHtml(data.date || new Date().toLocaleDateString('vi-VN'))}">
+        </div>
       </div>
       <div class="form-group">
         <label class="form-label">Mô tả ngắn Video</label>
@@ -540,6 +637,65 @@ function buildFormFields(coll, data) {
     `;
   }
   return '<p>Không có mẫu form cho danh mục này.</p>';
+}
+
+function updateGalleryImgPreview(val) {
+  const previewImg = document.getElementById('gallery-img-preview');
+  if (previewImg) {
+    if (val && val.trim()) {
+      previewImg.src = val.trim();
+    } else {
+      previewImg.src = 'assets/images/gallery-01.svg';
+    }
+  }
+}
+
+let ytFetchDebounceTimer = null;
+
+function updateYtThumbPreview(val) {
+  const previewImg = document.getElementById('yt-thumb-preview');
+  const durationInput = document.getElementById('input-yt-duration');
+  const titleInput = document.getElementById('input-yt-title');
+  const statusEl = document.getElementById('yt-fetch-status');
+
+  const cleanId = extractYouTubeId(val);
+
+  if (cleanId && /^[a-zA-Z0-9_-]{11}$/.test(cleanId)) {
+    if (previewImg) previewImg.src = `https://i.ytimg.com/vi/${cleanId}/hqdefault.jpg`;
+    if (statusEl) {
+      statusEl.innerHTML = '<span style="color: #0284c7;">⏳ Đang tự động lấy thời lượng video...</span>';
+    }
+
+    clearTimeout(ytFetchDebounceTimer);
+    ytFetchDebounceTimer = setTimeout(async () => {
+      try {
+        const res = await fetch(`/api/youtube-info?v=${cleanId}`);
+        const result = await res.json();
+        if (result && result.success) {
+          if (result.duration && durationInput) {
+            durationInput.value = result.duration;
+          }
+          if (result.title && titleInput && (!titleInput.value || titleInput.value.trim() === '')) {
+            titleInput.value = result.title;
+          }
+          if (statusEl) {
+            statusEl.innerHTML = `<span style="color: #16a34a; font-weight: 600;">✅ Đã nhận diện thời lượng: <strong>${result.duration || 'N/A'}</strong></span>`;
+          }
+        } else {
+          if (statusEl) {
+            statusEl.innerHTML = '<span style="color: #64748b;">(Không tải được thời lượng tự động, có thể nhập thủ công)</span>';
+          }
+        }
+      } catch (err) {
+        if (statusEl) {
+          statusEl.innerHTML = '<span style="color: #64748b;">(Không thể kết nối máy chủ để lấy thời lượng)</span>';
+        }
+      }
+    }, 350);
+  } else {
+    if (previewImg) previewImg.src = 'assets/images/default-video-thumbnail.svg';
+    if (statusEl) statusEl.innerHTML = '';
+  }
 }
 
 const crudForm = document.getElementById('crud-modal-form');
@@ -555,6 +711,14 @@ if (crudForm) {
     if (payload.skillsStr) {
       payload.skills = payload.skillsStr.split(',').map(s => s.trim()).filter(Boolean);
       delete payload.skillsStr;
+    }
+
+    if (currentModalCollection === 'youtubeVideos') {
+      const cleanId = extractYouTubeId(payload.videoId);
+      if (cleanId) {
+        payload.videoId = cleanId;
+        payload.thumbnail = `https://i.ytimg.com/vi/${cleanId}/hqdefault.jpg`;
+      }
     }
 
     const isEdit = Boolean(editingItemId);
@@ -612,6 +776,43 @@ async function deleteItem(collName, itemId) {
   } catch (err) {
     alert('❌ Lỗi kết nối: ' + err.message);
   }
+}
+
+function extractYouTubeId(urlOrId) {
+  if (!urlOrId || typeof urlOrId !== 'string') return '';
+  const str = urlOrId.trim();
+  if (/^[a-zA-Z0-9_-]{11}$/.test(str)) {
+    return str;
+  }
+  const match = str.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=|shorts\/))([a-zA-Z0-9_-]{11})/i);
+  if (match && match[1]) {
+    return match[1];
+  }
+  const paramMatch = str.match(/[?&]v=([a-zA-Z0-9_-]{11})/i);
+  if (paramMatch && paramMatch[1]) {
+    return paramMatch[1];
+  }
+  return str;
+}
+
+function parseDateToTimestamp(dateStr, createdAt, id) {
+  if (dateStr) {
+    const parts = String(dateStr).trim().split('/');
+    if (parts.length === 3) {
+      const day = parseInt(parts[0], 10);
+      const month = parseInt(parts[1], 10) - 1;
+      const year = parseInt(parts[2], 10);
+      const d = new Date(year, month, day);
+      if (!isNaN(d.getTime())) return d.getTime();
+    }
+    const parsed = Date.parse(dateStr);
+    if (!isNaN(parsed)) return parsed;
+  }
+  if (createdAt) {
+    const parsed = Date.parse(createdAt);
+    if (!isNaN(parsed)) return parsed;
+  }
+  return typeof id === 'number' ? id * 1000 : 0;
 }
 
 function escapeHtml(str) {

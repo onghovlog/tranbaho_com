@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="50%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#090d16" />
+    </linearGradient>
+
+    <!-- Glowing Accent Gradient -->
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f58220" />
+      <stop offset="100%" stop-color="#db6c10" />
+    </linearGradient>
+
+    <!-- Play Button Gradient -->
+    <linearGradient id="playGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff0000" />
+      <stop offset="100%" stop-color="#cc0000" />
+    </linearGradient>
+
+    <radialGradient id="glowGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f58220" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#f58220" stop-opacity="0" />
+    </radialGradient>
+
+    <filter id="dropShadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-opacity="0.5" flood-color="#000000" />
+    </filter>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="640" height="360" fill="url(#bgGrad)" />
+
+  <!-- Subtle Ambient Glow -->
+  <circle cx="320" cy="180" r="180" fill="url(#glowGlow)" />
+
+  <!-- Subtle Grid Lines Background Pattern -->
+  <g opacity="0.08" stroke="#ffffff" stroke-width="1">
+    <line x1="0" y1="90" x2="640" y2="90" />
+    <line x1="0" y1="180" x2="640" y2="180" />
+    <line x1="0" y1="270" x2="640" y2="270" />
+    <line x1="160" y1="0" x2="160" y2="360" />
+    <line x1="320" y1="0" x2="320" y2="360" />
+    <line x1="480" y1="0" x2="480" y2="360" />
+  </g>
+
+  <!-- Decorative Corner Accents -->
+  <path d="M 24 50 L 24 24 L 50 24" fill="none" stroke="#f58220" stroke-width="3" stroke-linecap="round" opacity="0.8" />
+  <path d="M 616 50 L 616 24 L 590 24" fill="none" stroke="#f58220" stroke-width="3" stroke-linecap="round" opacity="0.8" />
+  <path d="M 24 310 L 24 336 L 50 336" fill="none" stroke="#f58220" stroke-width="3" stroke-linecap="round" opacity="0.8" />
+  <path d="M 616 310 L 616 336 L 590 336" fill="none" stroke="#f58220" stroke-width="3" stroke-linecap="round" opacity="0.8" />
+
+  <!-- Brand Badge Top Left -->
+  <rect x="36" y="36" width="136" height="26" rx="13" fill="#f58220" fill-opacity="0.18" stroke="#f58220" stroke-width="1" />
+  <text x="104" y="53" font-family="'Inter', -apple-system, sans-serif" font-size="11" font-weight="700" fill="#f58220" text-anchor="middle" letter-spacing="1">TRẦN BÁ HỘ</text>
+
+  <!-- Center YouTube Play Icon Plate -->
+  <g filter="url(#dropShadow)">
+    <!-- Red Play Rounded Rectangle -->
+    <rect x="276" y="146" width="88" height="62" rx="16" fill="url(#playGrad)" />
+    <!-- White Triangle Play Icon -->
+    <polygon points="314,166 314,188 334,177" fill="#ffffff" />
+  </g>
+
+  <!-- Title and Subtitle Text at Bottom -->
+  <text x="320" y="260" font-family="'Inter', -apple-system, sans-serif" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="0.5">
+    VIDEO CHUYÊN ĐỀ &amp; CHIA SẺ
+  </text>
+  <text x="320" y="286" font-family="'Inter', -apple-system, sans-serif" font-size="12" font-weight="500" fill="#94a3b8" text-anchor="middle">
+    Thiết Kế Đồ Họa · Lập Trình Web · Kinh Doanh Online
+  </text>
+</svg>

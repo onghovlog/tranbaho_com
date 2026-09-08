@@ -590,16 +590,43 @@ function initLibrary(galleryItems = [], videoItems = []) {
     return { goToSlide };
   }
 
-  // 1. Setup Photos Slider (8 boxes per slide)
+  // Helper: Parse DD/MM/YYYY, ISO or Date string into timestamp
+  function parseDateToTimestamp(dateStr, createdAt, id) {
+    if (dateStr) {
+      const parts = String(dateStr).trim().split('/');
+      if (parts.length === 3) {
+        const day = parseInt(parts[0], 10);
+        const month = parseInt(parts[1], 10) - 1;
+        const year = parseInt(parts[2], 10);
+        const d = new Date(year, month, day);
+        if (!isNaN(d.getTime())) return d.getTime();
+      }
+      const parsed = Date.parse(dateStr);
+      if (!isNaN(parsed)) return parsed;
+    }
+    if (createdAt) {
+      const parsed = Date.parse(createdAt);
+      if (!isNaN(parsed)) return parsed;
+    }
+    return typeof id === 'number' ? id * 1000 : 0;
+  }
+
+  // 1. Setup Photos Slider (sorted from newest to oldest, 8 boxes per slide)
   if (photosTrack) {
-    const photoSlides = chunkArray(galleryItems, 8);
+    const sortedGallery = [...(galleryItems || [])].sort((a, b) => {
+      const timeA = parseDateToTimestamp(a.date, a.createdAt, a.id);
+      const timeB = parseDateToTimestamp(b.date, b.createdAt, b.id);
+      return timeB - timeA; // Descending: newest to oldest
+    });
+
+    const photoSlides = chunkArray(sortedGallery, 8);
     photosTrack.innerHTML = photoSlides.map(slideItems => `
       <div class="gallery-slide-grid">
         ${slideItems.map(item => `
-          <div class="gallery-box-item fade-up-element" data-id="${item.id}" role="button" tabindex="0" aria-label="${item.title}">
+          <div class="gallery-box-item fade-up-element" data-id="${item.id || item._id}" role="button" tabindex="0" aria-label="${item.title}">
             <img src="${item.image}" alt="${item.title}" class="gallery-box-img" loading="lazy" />
             <div class="gallery-box-overlay">
-              <span class="gallery-box-cat">${item.category}</span>
+              <span class="gallery-box-cat">${item.category}${item.date ? ' · ' + item.date : ''}</span>
               <h3 class="gallery-box-title">${item.title}</h3>
             </div>
           </div>
@@ -610,12 +637,12 @@ function initLibrary(galleryItems = [], videoItems = []) {
     // Attach click events for lightbox modal
     photosTrack.querySelectorAll('.gallery-box-item').forEach(item => {
       item.addEventListener('click', () => {
-        const id = parseInt(item.dataset.id, 10);
-        const g = galleryItems.find(x => x.id === id);
+        const itemId = item.dataset.id;
+        const g = sortedGallery.find(x => String(x.id) === String(itemId) || String(x._id) === String(itemId));
         if (g) {
           openProjectModal({
             title: g.title,
-            category: g.category,
+            category: g.category + (g.date ? ' · ' + g.date : ''),
             image: g.image,
             description: g.caption
           }, 'gallery');
@@ -638,26 +665,69 @@ function initLibrary(galleryItems = [], videoItems = []) {
     });
   }
 
-  // 2. Setup Videos Slider (6 boxes per slide)
+  // Helper: Extract clean 11-char YouTube ID from ID or URL
+  function getYouTubeVideoId(urlOrId) {
+    if (!urlOrId || typeof urlOrId !== 'string') return '';
+    const str = urlOrId.trim();
+    if (/^[a-zA-Z0-9_-]{11}$/.test(str)) {
+      return str;
+    }
+    const match = str.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=|shorts\/))([a-zA-Z0-9_-]{11})/i);
+    if (match && match[1]) {
+      return match[1];
+    }
+    const paramMatch = str.match(/[?&]v=([a-zA-Z0-9_-]{11})/i);
+    if (paramMatch && paramMatch[1]) {
+      return paramMatch[1];
+    }
+    return str;
+  }
+
+  // Helper: Get live YouTube thumbnail or fallback
+  function getYouTubeThumbnail(videoId, fallbackThumb) {
+    const cleanId = getYouTubeVideoId(videoId);
+    if (cleanId && /^[a-zA-Z0-9_-]{11}$/.test(cleanId)) {
+      return `https://i.ytimg.com/vi/${cleanId}/hqdefault.jpg`;
+    }
+    if (fallbackThumb && !fallbackThumb.includes('video-0') && !fallbackThumb.endsWith('.svg')) {
+      return fallbackThumb;
+    }
+    return 'assets/images/default-video-thumbnail.svg';
+  }
+
+  // 2. Setup Videos Slider (sorted from newest to oldest)
   if (videosTrack) {
-    const videoSlides = chunkArray(videoItems, 6);
+    const sortedVideos = [...(videoItems || [])].sort((a, b) => {
+      const timeA = parseDateToTimestamp(a.date, a.createdAt, a.id);
+      const timeB = parseDateToTimestamp(b.date, b.createdAt, b.id);
+      return timeB - timeA; // Descending: newest to oldest
+    });
+
+    const videoSlides = chunkArray(sortedVideos, 6);
     videosTrack.innerHTML = videoSlides.map(slideItems => `
       <div class="videos-slide-grid">
-        ${slideItems.map(item => `
+        ${slideItems.map(item => {
+          const cleanId = getYouTubeVideoId(item.videoId);
+          const thumbUrl = getYouTubeThumbnail(item.videoId, item.thumbnail);
+          return `
           <article class="video-box-item fade-up-element">
-            <div class="video-thumb-container" data-video-id="${item.videoId}" data-video-title="${item.title}" role="button" tabindex="0" aria-label="Phát video ${item.title}">
-              <img src="${item.thumbnail}" alt="${item.title}" class="video-box-img" loading="lazy" />
+            <div class="video-thumb-container" data-video-id="${cleanId}" data-video-title="${item.title}" role="button" tabindex="0" aria-label="Phát video ${item.title}">
+              <img src="${thumbUrl}" alt="${item.title}" class="video-box-img" loading="lazy" onerror="this.onerror=null; this.src='assets/images/default-video-thumbnail.svg';" />
               <div class="video-box-play-btn" aria-hidden="true">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
               </div>
-              <span class="video-box-duration">${item.duration}</span>
+              <span class="video-box-duration">${item.duration || ''}</span>
             </div>
             <div class="video-box-info">
-              <span class="video-box-cat">${item.category}</span>
+              <div class="video-box-meta">
+                <span class="video-box-cat">${item.category || 'YouTube'}</span>
+                ${item.date ? `<span class="video-box-date">${item.date}</span>` : ''}
+              </div>
               <h3 class="video-box-title">${item.title}</h3>
             </div>
           </article>
-        `).join('')}
+          `;
+        }).join('')}
       </div>
     `).join('');
 
@@ -1064,12 +1134,23 @@ function openProjectModal(item, type = 'general') {
 function openVideoModal(videoId, title) {
   if (!activeModalBackdrop) return;
   const modalBody = document.getElementById('modal-dynamic-content');
+  
+  let cleanId = (videoId || '').trim();
+  const match = cleanId.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=|shorts\/))([a-zA-Z0-9_-]{11})/i);
+  if (match && match[1]) {
+    cleanId = match[1];
+  } else {
+    const paramMatch = cleanId.match(/[?&]v=([a-zA-Z0-9_-]{11})/i);
+    if (paramMatch && paramMatch[1]) {
+      cleanId = paramMatch[1];
+    }
+  }
 
   modalBody.innerHTML = `
     <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; background: #000; border-radius: 16px 16px 0 0;">
       <iframe 
         style="position: absolute; top:0; left: 0; width: 100%; height: 100%; border:0;"
-        src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" 
+        src="https://www.youtube.com/embed/${cleanId}?autoplay=1&rel=0" 
         title="${title}"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
         allowfullscreen>

@@ -82,6 +82,9 @@
           <button class="nav-item" data-tab="articles">
             <span class="icon">📰</span> Bài viết & Tin tức
           </button>
+          <button class="nav-item" data-tab="gallery">
+            <span class="icon">📷</span> Thư viện Hình ảnh
+          </button>
           <button class="nav-item" data-tab="youtubeVideos">
             <span class="icon">🎬</span> Thư viện Video
           </button>
@@ -130,12 +133,20 @@
                 <div class="stat-lbl">Bài viết Blog</div>
               </div>
             </div>
+            <div class="stat-card">
+              <div class="stat-icon">📷</div>
+              <div class="stat-info">
+                <div class="stat-val" id="stat-gallery-count">0</div>
+                <div class="stat-lbl">Hình ảnh Thư viện</div>
+              </div>
+            </div>
           </div>
 
           <div class="overview-quick-actions">
             <h3>🚀 Thao tác nhanh</h3>
             <div class="action-buttons">
               <button class="btn btn-primary btn-sm" onclick="switchTab('contacts')">📬 Xem danh sách khách hàng mới</button>
+              <button class="btn btn-outline-primary btn-sm" onclick="openCrudModal('gallery', 'add')">📷 Thêm Ảnh Thư viện</button>
               <button class="btn btn-outline-primary btn-sm" onclick="openCrudModal('courses', 'add')">➕ Thêm Khóa học mới</button>
               <button class="btn btn-outline-primary btn-sm" onclick="openCrudModal('articles', 'add')">✍️ Viết Bài báo mới</button>
             </div>
@@ -296,17 +307,46 @@
                   <th>Video ID</th>
                   <th>Thời lượng</th>
                   <th>Danh mục</th>
+                  <th>Ngày đăng</th>
                   <th>Thao tác</th>
                 </tr>
               </thead>
               <tbody id="table-body-youtubeVideos">
+                <tr><td colspan="7" class="text-center">Đang tải dữ liệu...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Tab 8: Gallery Photos -->
+        <section id="panel-gallery" class="admin-panel">
+          <div class="panel-header flex-header">
+            <div>
+              <h2>📷 Quản Lý Thư Viện Hình Ảnh</h2>
+              <p>Danh sách hình ảnh hoạt động giảng dạy, sự kiện & workshop</p>
+            </div>
+            <button class="btn btn-primary btn-sm" onclick="openCrudModal('gallery', 'add')">➕ Thêm Hình Ảnh</button>
+          </div>
+          <div class="table-responsive">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Hình ảnh</th>
+                  <th>Tiêu đề ảnh / Hoạt động</th>
+                  <th>Chuyên mục</th>
+                  <th>Ngày đăng</th>
+                  <th>Chú thích / Mô tả</th>
+                  <th>Thao tác</th>
+                </tr>
+              </thead>
+              <tbody id="table-body-gallery">
                 <tr><td colspan="6" class="text-center">Đang tải dữ liệu...</td></tr>
               </tbody>
             </table>
           </div>
         </section>
 
-        <!-- Tab 8: Profile -->
+        <!-- Tab 9: Profile -->
         <section id="panel-profile" class="admin-panel">
           <div class="panel-header">
             <h2>👤 Thông Tin Cá Nhân & Liên Hệ</h2>
