@@ -344,9 +344,26 @@
           <button type="button" class="filter-btn" data-filter-design="social">Social</button>
         </div>
 
-        <!-- Dynamic Grid Container -->
-        <div class="portfolio-grid" id="design-portfolio-grid">
-          <!-- Rendered via JavaScript from db.json -->
+        <!-- Portfolio Slider Carousel (6 boxes per slide) -->
+        <div class="portfolio-slider-wrapper" id="portfolio-slider-wrapper">
+          <div class="portfolio-carousel-track" id="design-portfolio-track">
+            <!-- Dynamically rendered slides via JavaScript (6 boxes per slide) -->
+          </div>
+
+          <!-- Slider Controls -->
+          <div class="slider-controls" id="portfolio-slider-controls">
+            <button type="button" class="slider-nav-btn prev-btn" id="portfolio-prev-btn" aria-label="Slide thiết kế trước">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </button>
+            <div class="slider-dots" id="portfolio-slider-dots"></div>
+            <button type="button" class="slider-nav-btn next-btn" id="portfolio-next-btn" aria-label="Slide thiết kế tiếp theo">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
     </section>

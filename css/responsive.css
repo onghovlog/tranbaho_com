@@ -266,6 +266,12 @@
   }
 
   /* Portfolio & Web Showcase */
+  .portfolio-slide-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 16px;
+  }
+
   .portfolio-grid {
     grid-template-columns: 1fr;
     gap: 20px;
@@ -428,6 +434,12 @@
 
   .web-services-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .portfolio-slide-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
     gap: 20px;
   }
 

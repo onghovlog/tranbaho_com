@@ -1157,6 +1157,29 @@ ol {
   border-color: var(--text);
 }
 
+/* Portfolio Slider Carousel (6 boxes per slide: 3 columns x 2 rows) */
+.portfolio-slider-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.portfolio-carousel-track {
+  display: flex;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  width: 100%;
+}
+
+.portfolio-slide-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 28px;
+  width: 100%;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
 .portfolio-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

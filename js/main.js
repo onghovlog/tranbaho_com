@@ -360,12 +360,47 @@ function initHeaderAndNav() {
 }
 
 /* ==========================================================================
-   DESIGN PORTFOLIO MODULE & FILTER
+   DESIGN PORTFOLIO MODULE & FILTER (SLIDER CAROUSEL - 6 BOXES PER SLIDE)
    ========================================================================== */
 function initDesignPortfolio(items = []) {
-  const container = document.getElementById('design-portfolio-grid');
+  const track = document.getElementById('design-portfolio-track') || document.getElementById('design-portfolio-grid');
+  const dotsContainer = document.getElementById('portfolio-slider-dots');
+  const prevBtn = document.getElementById('portfolio-prev-btn');
+  const nextBtn = document.getElementById('portfolio-next-btn');
   const filterButtons = document.querySelectorAll('[data-filter-design]');
-  if (!container) return;
+
+  if (!track) return;
+
+  function chunkArray(array, size) {
+    const chunks = [];
+    for (let i = 0; i < array.length; i += size) {
+      chunks.push(array.slice(i, i + size));
+    }
+    return chunks.length > 0 ? chunks : [[]];
+  }
+
+  let currentSlide = 0;
+  let slidesCount = 0;
+
+  function goToSlide(index) {
+    if (index < 0) index = 0;
+    if (index >= slidesCount) index = slidesCount - 1;
+    currentSlide = index;
+
+    track.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+    // Update Dots
+    if (dotsContainer) {
+      const dots = dotsContainer.querySelectorAll('.slider-dot-btn');
+      dots.forEach((dot, idx) => {
+        dot.classList.toggle('active', idx === currentSlide);
+      });
+    }
+
+    // Update Prev / Next buttons
+    if (prevBtn) prevBtn.disabled = currentSlide === 0;
+    if (nextBtn) nextBtn.disabled = currentSlide === slidesCount - 1;
+  }
 
   function render(filter = 'all') {
     const rawFilter = (filter || 'all').toLowerCase().trim();
@@ -394,28 +429,39 @@ function initDesignPortfolio(items = []) {
         });
 
     if (filtered.length === 0) {
-      container.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-light);">Không có dự án nào trong mục này.</div>`;
+      track.innerHTML = `<div style="width: 100%; text-align: center; padding: 40px; color: var(--text-light);">Không có dự án nào trong mục này.</div>`;
+      if (prevBtn) prevBtn.style.display = 'none';
+      if (nextBtn) nextBtn.style.display = 'none';
+      if (dotsContainer) dotsContainer.style.display = 'none';
       return;
     }
 
-    container.innerHTML = filtered.map(item => `
-      <article class="portfolio-card fade-up-element in-view" data-modal-type="design" data-id="${item.id}" tabindex="0" role="button" aria-label="Xem chi tiết ${item.title}">
-        <div class="portfolio-thumb-wrapper">
-          <img src="${item.image}" alt="${item.title}" class="portfolio-thumb" loading="lazy" />
-          <div class="portfolio-overlay">
-            <span class="portfolio-overlay-btn">🔍 Xem chi tiết</span>
-          </div>
-        </div>
-        <div class="portfolio-body">
-          <span class="portfolio-category-badge">${item.category}</span>
-          <h3 class="portfolio-title">${item.title}</h3>
-          <p class="portfolio-desc">${item.description}</p>
-        </div>
-      </article>
+    // Chunk into 6 boxes per slide
+    const portfolioSlides = chunkArray(filtered, 6);
+    slidesCount = portfolioSlides.length;
+
+    track.innerHTML = portfolioSlides.map(slideItems => `
+      <div class="portfolio-slide-grid">
+        ${slideItems.map(item => `
+          <article class="portfolio-card fade-up-element in-view" data-modal-type="design" data-id="${item.id}" tabindex="0" role="button" aria-label="Xem chi tiết ${item.title}">
+            <div class="portfolio-thumb-wrapper">
+              <img src="${item.image}" alt="${item.title}" class="portfolio-thumb" loading="lazy" />
+              <div class="portfolio-overlay">
+                <span class="portfolio-overlay-btn">🔍 Xem chi tiết</span>
+              </div>
+            </div>
+            <div class="portfolio-body">
+              <span class="portfolio-category-badge">${item.category}</span>
+              <h3 class="portfolio-title">${item.title}</h3>
+              <p class="portfolio-desc">${item.description}</p>
+            </div>
+          </article>
+        `).join('')}
+      </div>
     `).join('');
 
-    // Attach click events for lightbox
-    container.querySelectorAll('.portfolio-card').forEach(card => {
+    // Attach click events for lightbox modal
+    track.querySelectorAll('.portfolio-card').forEach(card => {
       card.addEventListener('click', () => {
         const id = parseInt(card.dataset.id, 10);
         const project = items.find(p => p.id === id);
@@ -428,7 +474,61 @@ function initDesignPortfolio(items = []) {
         }
       });
     });
+
+    // Build Dots
+    if (dotsContainer) {
+      dotsContainer.innerHTML = '';
+      for (let i = 0; i < slidesCount; i++) {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = `slider-dot-btn ${i === 0 ? 'active' : ''}`;
+        dot.setAttribute('aria-label', `Chuyển tới slide thiết kế ${i + 1}`);
+        dot.addEventListener('click', () => goToSlide(i));
+        dotsContainer.appendChild(dot);
+      }
+    }
+
+    // Controls visibility
+    if (slidesCount <= 1) {
+      if (prevBtn) prevBtn.style.display = 'none';
+      if (nextBtn) nextBtn.style.display = 'none';
+      if (dotsContainer) dotsContainer.style.display = 'none';
+    } else {
+      if (prevBtn) prevBtn.style.display = 'flex';
+      if (nextBtn) nextBtn.style.display = 'flex';
+      if (dotsContainer) dotsContainer.style.display = 'flex';
+    }
+
+    goToSlide(0);
   }
+
+  // Navigation button handlers
+  if (prevBtn) {
+    prevBtn.onclick = () => goToSlide(currentSlide - 1);
+  }
+  if (nextBtn) {
+    nextBtn.onclick = () => goToSlide(currentSlide + 1);
+  }
+
+  // Touch Swipe Support for Mobile/Tablet
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  track.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+
+  track.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    const diffX = touchStartX - touchEndX;
+    if (Math.abs(diffX) > 45 && slidesCount > 1) {
+      if (diffX > 0) {
+        goToSlide(currentSlide + 1);
+      } else {
+        goToSlide(currentSlide - 1);
+      }
+    }
+  }, { passive: true });
 
   filterButtons.forEach(btn => {
     btn.addEventListener('click', () => {
